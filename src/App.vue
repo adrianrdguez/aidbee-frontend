@@ -1,21 +1,18 @@
 <template>
-  <div>
-      <v-content>
-        <router-view />
-      </v-content>
-  </div>
+  <v-app>
+    <component :is="layout">
+      <router-view></router-view>
+    </component>
+  </v-app>
 </template>
 
 <script>
-
 export default {
   name: 'App',
-
-  components: {
-  },
-
-  data: () => ({
-    //
-  })
+  computed: {
+    layout () {
+      return this.$route.meta.layout || 'default'
+    }
+  }
 }
 </script>
