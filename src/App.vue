@@ -1,9 +1,11 @@
 <template>
-  <v-app>
-    <component :is="layout">
-      <router-view></router-view>
-    </component>
-  </v-app>
+  <div class="color">
+    <v-app>
+      <component :is="layout">
+        <router-view></router-view>
+      </component>
+    </v-app>
+  </div>
 </template>
 
 <script>
@@ -16,3 +18,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.color {
+  background: linear-gradient(180deg, #043170 0%, #EDC1BB 100%);
+}
+</style>
