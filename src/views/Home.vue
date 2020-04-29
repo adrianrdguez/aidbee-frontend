@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <h1>THE END.</h1>
   </div>
 </template>
 

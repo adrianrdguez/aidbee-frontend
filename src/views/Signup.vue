@@ -4,20 +4,54 @@
       <v-col cols="12" sm="8" md="6" lg="4">
         <v-card class="elevation-5">
           <v-toolbar color="primary" dark flat >
-            <v-toolbar-title>Login</v-toolbar-title>
+            <v-toolbar-title>Sign Up</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <v-form>
-              <v-text-field class="email" label="E-mail" v-model="email" :rules="emailRules" prepend-icon="mdi-email"></v-text-field>
+              <v-text-field
+            label="Name"
+            v-model="name"
+            prepend-icon="mdi-account-circle"
+            :rules="userRules"
+          ></v-text-field>
 
-               <v-text-field class="password" label="Password" v-model="userPassword" :type="pwdType" prepend-icon="mdi-lock" :rules="passwordRule" :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" ></v-text-field>
+          <v-text-field
+            label="Surname"
+            v-model="surname"
+            prepend-icon="mdi-account-circle"
+            :rules="surnameRules"
+          ></v-text-field>
+
+          <v-text-field
+            label="E-mail"
+            v-model="email"
+            :rules="emailRules"
+            prepend-icon="mdi-email"
+          ></v-text-field>
+
+          <v-text-field
+            label="Telephone"
+            v-model="telephone"
+            prepend-icon="mdi-cellphone"
+            :rules="telephoneRules"
+          ></v-text-field>
+
+          <v-text-field
+            label="Password"
+            v-model="userPassword"
+            :type="showPassword ? 'text' : 'password'"
+            prepend-icon="mdi-lock"
+            :rules="passwordRule"
+            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            @click:append="showPassword = !showPassword"
+          ></v-text-field>
             </v-form>
           </v-card-text>
           <v-card-actions>
             <v-spacer />
             <v-btn class='button' color="primary" @click="login">Inicia sesión</v-btn>
           </v-card-actions>
-          <h6 class='text2'>Aun no tienes cuenta? <router-link class='lgbtn' to="/signup">Create Una Aquí</router-link></h6>
+          <h6 class='text2'>Ya tienes cuenta pescao?<router-link class='lgbtn' to="/login">Inicia Sesion Aqui</router-link></h6>
 
         </v-card>
       </v-col>
@@ -49,7 +83,7 @@ export default {
     login () {
       const user = {
         email: this.email,
-        password: this.userPassword
+        password: this.password
       }
       APIServices.login(user)
         .then(response => {
@@ -66,7 +100,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
