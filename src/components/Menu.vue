@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation v-model="bottomNav" dark active-class="active-menu-option" absolute app color="secondary" background-color="secondary2">
+  <v-bottom-navigation v-model="bottomNav" dark active-class="active-menu-option" absolute app color="secondary2" background-color="secondary">
     <v-btn value="getHelp" width="30%">
       <span>Get Help</span>
       <v-icon>mdi-history</v-icon>
@@ -21,7 +21,7 @@ export default {
 </script>
 <style lang="scss">
 .active-menu-option {
-  background-color: #EDC1BB !important;
-  color: black !important;
+  background-color: #043170 !important;
+  color: white !important;
 }
 </style>

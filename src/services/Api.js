@@ -24,7 +24,7 @@ export default {
   },
 
   async createHelp (newHelp) {
-    const response = await API.post('/me/helps/', {
+    const response = await API.post('/me/helps', {
       ...newHelp
     }, {
       headers: {

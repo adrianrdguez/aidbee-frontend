@@ -13,8 +13,8 @@
     </div>
 
     <div v-else>
-      <v-btn text small class="mr-2" color="secondary" to="/Popup">Create Help</v-btn>
-      <v-avatar color="red" size="30">
+      <!-- <v-btn text small class="mr-2" color="secondary" to="/Popup">Create Help</v-btn> -->
+      <v-avatar color="secondary" size="30">
         <span class="white--text">PP</span>
       </v-avatar>
       <v-btn icon @click="logout" color="secondary">

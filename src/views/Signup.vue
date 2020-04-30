@@ -58,7 +58,7 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn class='button' color="primary" @click="login">Inicia sesión</v-btn>
+              <v-btn class='button' color="primary" @click="signup">Únete</v-btn>
               <v-spacer />
             </v-card-actions>
             <h6 class='text2'>Ya tienes cuenta pescao? <router-link class='lgbtn' to="/login">Inicia Sesion Aqui</router-link></h6>
@@ -75,7 +75,7 @@ import APIServices from '../services/Api'
 import Navbar from '../components/Navbar'
 
 export default {
-  name: 'login',
+  name: 'signup',
   components: {
     Navbar
   },
@@ -87,30 +87,38 @@ export default {
         v => !!v || 'Password is required',
         v => v.length >= 6 || 'Password must be more than 6 characters'
       ],
+      name: '',
+      userRules: [v => !!v || 'Name is required'],
+      surname: '',
+      surnameRules: [v => !!v || 'Surname is required'],
       email: '',
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+\..+/.test(v) || 'E-mail must be valid'
+      ],
+      telephone: '',
+      telephoneRules: [
+        v => !!v || 'Telephone is required',
+        v => v.length >= 9 || 'Telephone must be more than 9 characters'
       ]
     }
   },
   methods: {
-    login () {
-      const user = {
+    signup () {
+      const newUser = {
+        name: this.name,
         email: this.email,
-        password: this.password
+        password: this.userPassword,
+        telephone: this.telephone,
+        surname: this.surname
       }
-      APIServices.login(user)
+
+      APIServices.signup(newUser)
         .then(response => {
           localStorage.setItem('token', response.token)
           this.$router.push('/home')
         })
         .catch(err => console.log(err))
-    }
-  },
-  computed: {
-    pwdType () {
-      return this.showPassword ? 'text' : 'password'
     }
   }
 }

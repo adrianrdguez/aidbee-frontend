@@ -2,7 +2,6 @@
   <div class="color">
     <v-app>
       <component :is="layout">
-        <Signup/>
         <router-view></router-view>
       </component>
     </v-app>
@@ -11,12 +10,9 @@
 
 <script>
 
-import Signup from '@/components/Signup.vue'
-
 export default {
   name: 'App',
   components: {
-    Signup
   },
   computed: {
     layout () {
