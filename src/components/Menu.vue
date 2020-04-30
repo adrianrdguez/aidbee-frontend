@@ -1,0 +1,27 @@
+<template>
+  <v-bottom-navigation v-model="bottomNav" dark active-class="active-menu-option" absolute app color="secondary" background-color="secondary2">
+    <v-btn value="getHelp" width="30%">
+      <span>Get Help</span>
+      <v-icon>mdi-history</v-icon>
+    </v-btn>
+    <v-btn value="offerHelp" width="30%" color="">
+      <span >Get Help</span>
+      <v-icon>mdi-history</v-icon>
+    </v-btn>
+  </v-bottom-navigation>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      bottomNav: 'getHelp'
+    }
+  }
+}
+</script>
+<style lang="scss">
+.active-menu-option {
+  background-color: #EDC1BB !important;
+  color: black !important;
+}
+</style>

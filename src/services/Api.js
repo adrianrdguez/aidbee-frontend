@@ -21,5 +21,26 @@ export default {
       ...user
     })
     return response.data
+  },
+
+  async createHelp (newHelp) {
+    const response = await API.post('/me/helps/', {
+      ...newHelp
+    }, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    return response.data
+  },
+
+  async getHelps () {
+    const response = await API.get('/me/helps/',
+      {
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+    return response.data
   }
 }

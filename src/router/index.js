@@ -24,7 +24,15 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: Home,
+    beforeEnter (to, from, next) {
+      if (!localStorage.getItem('token')) {
+        next({
+          name: 'Signup'
+        })
+      }
+      next()
+    }
   }
 ]
 

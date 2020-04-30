@@ -1,6 +1,13 @@
 <template>
+<div class="color">
+  <Navbar></Navbar>
     <v-container class="fill-height" fluid >
       <v-row align="center" justify="center" >
+        <v-col cols="12" sm="8" md="6" lg="4">
+            <h1 class="mt-12 white--text">¡Bienvenido a Aidbee!</h1>
+            <br />
+            <h2 class="white--text">¿No puedes salir de casa?Pide ayuda a algún voluntario local.¿Te gustaría ayudar a tus vecinos?Entrega objetos esenciales a vecinos del alredor.</h2>
+          </v-col>
         <v-col cols="12" sm="8" md="6" lg="4">
           <v-card class="elevation-5">
             <v-toolbar color="primary" dark flat >
@@ -60,13 +67,18 @@
         </v-col>
       </v-row>
     </v-container>
+  </div>
 </template>
 
 <script>
 import APIServices from '../services/Api'
+import Navbar from '../components/Navbar'
 
 export default {
   name: 'login',
+  components: {
+    Navbar
+  },
   data () {
     return {
       showPassword: false,
@@ -109,5 +121,10 @@ export default {
   padding-bottom: 2px;
   padding-left: 5px;
   text-align: center;
+}
+
+.color{
+  background: linear-gradient(180deg, #043170 0%, #EDC1BB 100%);
+  height: 100vh;
 }
 </style>
