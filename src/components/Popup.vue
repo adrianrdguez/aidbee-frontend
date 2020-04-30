@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="dialog" persistent max-width="600px">
+    <v-dialog v-model="dialog" persistent max-width="590px">
       <template v-slot:activator="{ on }">
         <v-btn color="secondary" dark v-on="on" width="100%">Create Help</v-btn>
       </template>
@@ -14,7 +14,7 @@
                 <v-col cols="12" sm="6">
                 <v-select
                   v-model="help_type"
-                  :items="['Health', 'Food', 'Other']"
+                  :items="['health', 'food', 'other']"
                   label="Type of help*"
                   required
                 ></v-select>
@@ -52,7 +52,7 @@
 import APIServices from '../services/Api'
 export default {
   data: () => ({
-    help_type: ['health', 'food', 'other'],
+    help_type: '',
     request_title: '',
     address: '',
     text: '',
@@ -63,15 +63,16 @@ export default {
   methods: {
     save () {
       const newHelp = {
+        help_type: this.help_type,
         request_title: this.request_title,
         address: this.address,
         text: this.text,
         telephone: this.telephone,
         addInfo: this.addInfo
       }
-      console.log(APIServices.createHelp(newHelp))
+      APIServices.createHelp(newHelp)
         .then(() => {
-          this.$router.push('/home')
+          this.dialog = false
         })
         .catch(err => console.log(err))
     }

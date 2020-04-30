@@ -5,21 +5,26 @@
   >
     <v-card-text>
       <div></div>
-      <p class="display-1 text--primary">
-        be•nev•o•lent
+      <p class="display-1 secondary2--text">
+        {{ data.request_title }}
       </p>
-      <p>adjective</p>
-      <div class="text--primary">
-        well meaning and kindly.<br>
-        "a benevolent smile"
+      <h2 class="secondary2--text">  {{ data.help_type }} </h2>
+      <div class="secondary2--text">
+        {{ data.text }}
       </div>
     </v-card-text>
     <v-card-actions>
-      <v-btn
+       <v-btn
         text
-        color="deep-purple accent-4"
+        color="secondary2"
       >
-        Learn More
+        Modify Help
+      </v-btn>
+       <v-btn
+        text
+        color="secondary2"
+      >
+        Delete Help
       </v-btn>
     </v-card-actions>
   </v-card>

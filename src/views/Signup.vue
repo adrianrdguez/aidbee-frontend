@@ -6,7 +6,7 @@
         <v-col cols="12" sm="8" md="6" lg="4">
             <h1 class="mt-12 white--text">¡Bienvenido a Aidbee!</h1>
             <br />
-            <h2 class="white--text">¿No puedes salir de casa?Pide ayuda a algún voluntario local.¿Te gustaría ayudar a tus vecinos?Entrega objetos esenciales a vecinos del alredor.</h2>
+            <h2 class="white--text">¿No puedes salir de casa? Pide ayuda a algún voluntario local. ¿Te gustaría ayudar a tus vecinos?Entrega objetos esenciales a vecinos del alredor.</h2>
           </v-col>
         <v-col cols="12" sm="8" md="6" lg="4">
           <v-card class="elevation-5">

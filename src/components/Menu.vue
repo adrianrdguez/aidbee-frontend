@@ -1,5 +1,6 @@
 <template>
-  <v-bottom-navigation v-model="bottomNav" dark active-class="active-menu-option" absolute app color="secondary2" background-color="secondary">
+
+  <v-bottom-navigation v-model="bottomNav" dark active-class="active-menu-option" app color="secondary2" background-color="secondary">
     <v-btn value="getHelp" width="30%">
       <span>Get Help</span>
       <v-icon>mdi-history</v-icon>
@@ -10,6 +11,7 @@
     </v-btn>
   </v-bottom-navigation>
 </template>
+
 <script>
 export default {
   data () {
