@@ -1,6 +1,5 @@
 <template>
-
-  <v-bottom-navigation v-model="bottomNav" dark active-class="active-menu-option" app color="secondary" background-color="secondary2">
+  <v-bottom-navigation v-model="bottomNav" dark active-class="active-menu-option" app fixed color="secondary" background-color="secondary2">
     <v-btn value="getHelp" width="30%">
       <span>Get Help</span>
       <v-icon>mdi-history</v-icon>

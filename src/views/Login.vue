@@ -1,6 +1,5 @@
 <template>
   <div class="color">
-    <Navbar></Navbar>
     <v-container class="fill-height">
       <v-row align="center" justify="center" >
         <v-col cols="12" sm="8" md="6" lg="4">
@@ -33,13 +32,9 @@
 
 <script>
 import APIServices from '../services/Api'
-import Navbar from '../components/Navbar'
 
 export default {
   name: 'login',
-  components: {
-    Navbar
-  },
   data () {
     return {
       showPassword: false,

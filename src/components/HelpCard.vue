@@ -1,18 +1,17 @@
 <template>
-  <v-card class="mx-auto" max-width="344">
+  <v-card class="mx-auto" :to="`helps/${ help._id }`">
     <v-card-text>
       <div></div>
       <p class="display-1 secondary2--text">
-        {{ data.request_title }}
+        {{ help.request_title }}
       </p>
-      <h2 class="secondary2--text">  {{ data.help_type }} </h2>
+      <h2 class="secondary2--text">  {{ help.help_type }} </h2>
       <div class="secondary2--text">
-        {{ data.text }}
+        {{ help.text }}
       </div>
     </v-card-text>
     <v-card-actions>
-       <!-- <PopupModify></PopupModify> -->
-       <v-btn text color="secondary2" @click="deleteHelpById(data._id)">Delete Help</v-btn>
+       <v-btn text color="secondary2" @click="deleteHelpById(help._id)">Delete Help</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -20,11 +19,10 @@
 <script>
 
 import APIServices from '../services/Api'
-// import PopupModify from '@/components/PopupModify.vue'
 
 export default {
   props: {
-    data: Object,
+    help: Object,
     helpIdx: Number,
     deleteHelpCard: Function
   },
@@ -37,9 +35,6 @@ export default {
         })
         .catch(err => console.log(err))
     }
-  },
-  components: {
-    // PopupModify
   }
 }
 </script>

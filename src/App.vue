@@ -1,19 +1,14 @@
 <template>
-  <div class="color">
-    <v-app>
-      <component :is="layout">
-        <router-view></router-view>
-      </component>
-    </v-app>
-  </div>
+  <v-app class="color">
+    <component :is="layout">
+      <router-view></router-view>
+    </component>
+  </v-app>
 </template>
 
 <script>
-
 export default {
   name: 'App',
-  components: {
-  },
   computed: {
     layout () {
       return this.$route.meta.layout || 'default'
@@ -24,6 +19,6 @@ export default {
 
 <style lang="scss" scoped>
 .color {
-  background: linear-gradient(180deg, #043170 0%, #EDC1BB 100%);
+  background: linear-gradient(180deg, #043170 0%, #EDC1BB 100%) !important;
 }
 </style>

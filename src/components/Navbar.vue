@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar flat dense class="transparent">
+  <v-app-bar flat dense  app class="semitransp">
 
     <router-link to="/">
       <h2 class="font">Aidbee</h2>
@@ -53,7 +53,7 @@ export default {
 .max {
   width: auto !important;
 }
-.transparent {
-  background-color: !important;
+.semitransp {
+  background-color: rgba(4,49,112, 0.8) !important;
 }
 </style>

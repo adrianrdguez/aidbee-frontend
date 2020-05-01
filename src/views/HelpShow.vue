@@ -1,8 +1,11 @@
-<template v-slot:activator="{ on }">
-  <div class="home">
-    <v-btn color="secondary" class="secondary2--text" to="helps/new">Create Help</v-btn>
-    <HelpList :helps="allHelps" @deleteHelpList="deleteHelpHome"/>
-  </div>
+<template>
+  <v-container>
+    <v-row>
+      <v-col>
+        <HelpList :helps="allHelps" @deleteHelpList="deleteHelpHome"/>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -19,7 +22,7 @@ export default {
       allHelps: []
     }
   },
-  created () {
+  mounted () {
     APIServices.getHelps()
       .then(res => (this.allHelps = res))
   },
