@@ -1,6 +1,12 @@
 <template>
   <div id="list">
-    <HelpCard v-for="(help,idx) in helps" :key="idx" :data="help" class="mx-4 my-3 secondary--text" color="transparent"/>
+    <HelpCard v-for="(help,idx) in helps"
+      :key="idx"
+      :data="help"
+      class="mx-4 my-3 secondary--text"
+      color="transparent"
+      :helpIdx="idx"
+      :deleteHelpCard="deleteHelpCard"/>
   </div>
 </template>
 
@@ -12,13 +18,14 @@ export default {
     HelpCard
   },
   props: {
-    helps: Array
+    helps: Array,
+    deleteHelpList: Function
   },
-  // methods: {
-  //   addToList (newHelp) {
-  //     this.$emit('addToList', newHelp)
-  //   }
-  // }
+  methods: {
+    deleteHelpCard (idx) {
+      this.$emit('deleteHelpList', idx)
+    }
+  }
 }
 </script>
 

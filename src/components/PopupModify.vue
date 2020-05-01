@@ -2,11 +2,11 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="590px">
       <template v-slot:activator="{ on }">
-        <v-btn color="secondary" class="secondary2--text" v-on="on" width="10%">Create Help</v-btn>
+        <v-btn class="secondary2--text" v-on="on">Modify Help</v-btn>
       </template>
       <v-card>
         <v-card-title>
-          <span class="headline">Request a delivery</span>
+          <span class="headline">Modify your help</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -40,51 +40,10 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="save">Create Help</v-btn>
+          <v-btn color="blue darken-1" text @click="dialog = false">Cancel</v-btn>
+          <v-btn color="blue darken-1" text @click="save">Modify</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
   </v-row>
 </template>
-
-<script>
-import APIServices from '../services/Api'
-export default {
-  data: () => ({
-    help_type: '',
-    request_title: '',
-    address: '',
-    text: '',
-    telephone: '',
-    addInfo: '',
-    dialog: false
-  }),
-  props: {
-    addNewHelp: Function
-  },
-  methods: {
-    save () {
-      const newHelp = {
-        help_type: this.help_type,
-        request_title: this.request_title,
-        address: this.address,
-        text: this.text,
-        telephone: this.telephone,
-        addInfo: this.addInfo
-      }
-      APIServices.createHelp(newHelp)
-        .then(newHelp => {
-          this.dialog = false
-          this.$emit('addNewHelp', newHelp)
-          location.reload()
-        })
-        .catch(err => console.log(err))
-    }
-  }
-}
-</script>
-
-<style lang='scss' scoped>
-
-</style>

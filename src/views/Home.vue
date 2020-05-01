@@ -1,8 +1,8 @@
 <template v-slot:activator="{ on }">
   <div class="home">
     <Navbar/>
-    <Popup/>
-    <HelpList :helps="allHelps" />
+    <Popup @addNewHelp="addNewHelp"/>
+    <HelpList :helps="allHelps" @deleteHelpList="deleteHelpHome"/>
     <Menu/>
   </div>
 </template>
@@ -32,7 +32,13 @@ export default {
       .then(res => (this.allHelps = res))
   },
   methods: {
-
+    deleteHelpHome (idx) {
+      console.log('me estan llamando coñò')
+      this.allHelps.splice(idx, 1)
+    },
+    addNewHelp (newHelp) {
+      this.allHelps.push(newHelp)
+    }
   }
 }
 </script>

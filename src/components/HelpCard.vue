@@ -1,8 +1,5 @@
 <template>
-  <v-card
-    class="mx-auto"
-    max-width="344"
-  >
+  <v-card class="mx-auto" max-width="344">
     <v-card-text>
       <div></div>
       <p class="display-1 secondary2--text">
@@ -14,28 +11,31 @@
       </div>
     </v-card-text>
     <v-card-actions>
-       <v-btn
-        text
-        color="secondary2"
-      >
-        Modify Help
-      </v-btn>
-       <v-btn
-        text
-        color="secondary2"
-      >
-        Delete Help
-      </v-btn>
+       <v-btn text color="secondary2">Modify Help</v-btn>
+       <v-btn text color="secondary2" @click="deleteHelpById(data._id)">Delete Help</v-btn>
     </v-card-actions>
   </v-card>
 </template>
-Word of the Day
-be•n
 
 <script>
+
+import APIServices from '../services/Api'
+
 export default {
   props: {
-    data: Object
+    data: Object,
+    helpIdx: Number,
+    deleteHelpCard: Function
+  },
+  methods: {
+    deleteHelpById (helpId) {
+      APIServices.deleteHelpById(helpId)
+        .then(() => {
+          this.$emit('deleteHelpCard', this.helpIdx)
+        })
+        .catch(err => console.log(err))
+    }
+
   }
 }
 </script>
