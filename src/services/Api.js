@@ -51,5 +51,15 @@ export default {
       }
     })
     return response.data
+  },
+
+  async getHelpById (helpId) {
+    const response = await API.get(`/me/helps/${helpId}`,
+      {
+        headers: {
+          token: localStorage.getItem('token')
+        }
+      })
+    return response.data
   }
 }

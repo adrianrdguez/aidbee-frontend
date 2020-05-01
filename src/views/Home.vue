@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     deleteHelpHome (idx) {
-      console.log('me estan llamando coñò')
       this.allHelps.splice(idx, 1)
     },
     addNewHelp (newHelp) {

@@ -11,7 +11,7 @@
       </div>
     </v-card-text>
     <v-card-actions>
-       <v-btn text color="secondary2">Modify Help</v-btn>
+       <!-- <PopupModify></PopupModify> -->
        <v-btn text color="secondary2" @click="deleteHelpById(data._id)">Delete Help</v-btn>
     </v-card-actions>
   </v-card>
@@ -20,6 +20,7 @@
 <script>
 
 import APIServices from '../services/Api'
+// import PopupModify from '@/components/PopupModify.vue'
 
 export default {
   props: {
@@ -32,10 +33,13 @@ export default {
       APIServices.deleteHelpById(helpId)
         .then(() => {
           this.$emit('deleteHelpCard', this.helpIdx)
+          location.reload()
         })
         .catch(err => console.log(err))
     }
-
+  },
+  components: {
+    // PopupModify
   }
 }
 </script>
