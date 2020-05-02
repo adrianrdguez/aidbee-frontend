@@ -32,8 +32,8 @@
             </v-col>
           </v-row>
         </v-container>
-        <small>*indicates required field</small>
-        <v-btn color="blue darken-1" text @click="save">Create Help</v-btn>
+        <small dark >*indicates required field</small>
+        <v-btn color="secondary2" text @click="save">Create Help</v-btn>
       </v-col>
     </v-row>
   </v-container>

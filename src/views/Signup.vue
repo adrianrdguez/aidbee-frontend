@@ -60,7 +60,7 @@
               <v-btn class='button' color="primary" @click="signup">Únete</v-btn>
               <v-spacer />
             </v-card-actions>
-            <h6 class='text2'>Ya tienes cuenta pescao? <router-link class='lgbtn' to="/login">Inicia Sesion Aqui</router-link></h6>
+            <!-- <h6 class='text2'>Ya tienes cuenta pescao? <router-link class='lgbtn' to="/login">Inicia Sesion Aqui</router-link></h6> -->
 
           </v-card>
         </v-col>

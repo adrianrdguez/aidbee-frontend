@@ -21,7 +21,7 @@
               <v-btn class='button' color="primary" @click="login">Inicia sesión</v-btn>
               <v-spacer />
             </v-card-actions>
-            <h6 class='text2'>Aun no tienes cuenta? <router-link class='lgbtn' to="/signup">Create Una Aquí</router-link></h6>
+            <!-- <h6 class='text2'>Aun no tienes cuenta? <router-link class='lgbtn' to="/signup">Create Una Aquí</router-link></h6> -->
 
           </v-card>
         </v-col>
