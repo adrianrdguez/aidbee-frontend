@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="justify-center">
     <v-row justify="center">
       <v-col cols="12" sm="8" md="6">
         <h2 class="headline secondary--text">Request a delivery</h2>
@@ -32,8 +32,10 @@
             </v-col>
           </v-row>
         </v-container>
-        <small dark >*indicates required field</small>
-        <v-btn color="secondary2" text @click="save">Create Help</v-btn>
+        <small class="small" dark>*indicates required field</small><br>
+        <v-btn  color="secondary2 white--text" to="/home">Cancel</v-btn>
+        <v-spacer></v-spacer>
+        <v-btn  color="secondary2 white--text" @click="save">Create Help</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -70,3 +72,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.small {
+  color: #043170;
+  bottom: 50px,
+}
+
+</style>

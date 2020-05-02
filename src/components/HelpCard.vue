@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" :to="`helps/${ help._id }`">
+  <v-card class="mx-auto" :to="`helps/${ help._id }`" color="terciary">
     <v-card-text>
       <div></div>
       <p class="display-1 secondary2--text">
@@ -12,6 +12,8 @@
     </v-card-text>
     <v-card-actions>
        <v-btn text color="secondary2" @click="deleteHelpById(help._id)">Delete Help</v-btn>
+       <v-btn text color="secondary2" @click="deleteHelpById(help._id)">See Help</v-btn>
+
     </v-card-actions>
   </v-card>
 </template>
