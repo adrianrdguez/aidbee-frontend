@@ -1,5 +1,47 @@
 <template>
   <v-app-bar flat dense  app class="semitransp">
+    <div>
+        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+        <v-navigation-drawer
+          v-model="drawer"
+          bottom
+          clipped
+          fixed
+          xs
+          :width="windowWidth"
+        >
+          <v-list nav dense>
+            <v-list-item-group v-model="group">
+
+            <v-list-item @click="drawer = false">
+              <v-icon>mdi-close</v-icon>
+            </v-list-item>
+
+              <v-divider></v-divider>
+
+              <v-list-item class="mb-0">
+                <v-list-item-title style="height:50px" class="d-flex align-center d-flex align-center">Foo</v-list-item-title>
+              </v-list-item>
+
+              <v-divider></v-divider>
+
+              <v-list-item class="mb-0">
+                <v-list-item-title style="height:50px" class="d-flex align-center d-flex align-center"  >Bar</v-list-item-title>
+              </v-list-item>
+
+              <v-list-item class="mb-0">
+                <v-list-item-title style="height:50px" class="d-flex align-center d-flex align-center" >Fizz</v-list-item-title>
+              </v-list-item>
+
+              <v-list-item class="mb-0">
+                <v-list-item-title style="height:50px" class="d-flex align-center d-flex align-center" >Buzz</v-list-item-title>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+        </v-navigation-drawer>
+      </div>
+
     <v-spacer></v-spacer>
     <router-link to="/">
       <h2 class="font">Aidbee</h2>
@@ -12,7 +54,6 @@
     </div>
 
     <div v-else>
-      <!-- <v-btn text small class="mr-2" color="secondary" to="/Popup">Create Help</v-btn> -->
       <v-avatar color="secondary" size="30">
         <span class="white--text">PP</span>
       </v-avatar>
@@ -20,7 +61,7 @@
         <v-icon color="secondary">mdi-logout</v-icon>
       </v-btn>
     </div>
-  
+
   </v-app-bar>
 </template>
 
@@ -28,8 +69,9 @@
 
 export default {
   name: 'Navbar',
-  components: {
-  },
+  data: () => ({
+    drawer: false
+  }),
   computed: {
     existsToken () {
       return localStorage.getItem('token')
@@ -39,6 +81,18 @@ export default {
     logout () {
       localStorage.clear()
       this.$router.push('/login')
+    }
+  },
+  mounted: {
+    function () {
+      this.status = !!localStorage.getItem('token')
+      this.$root.$on('log', status => {
+        this.status = status
+      })
+      this.windowWidth = window.innerWidth < 600 ? '75%' : '50%'
+      window.onresize = () => {
+        this.windowWidth = window.innerWidth < 600 ? '75%' : '50%'
+      }
     }
   }
 }

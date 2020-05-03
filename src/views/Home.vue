@@ -1,6 +1,6 @@
 <template v-slot:activator="{ on }">
   <div class="home">
-    <v-btn color="secondary" class="secondary2--text" to="helps/new">Create Help</v-btn>
+    <v-btn color="secondary" class="secondary2--text" to="helps/new" >Create Help</v-btn>
     <HelpList :helps="allHelps" @deleteHelpList="deleteHelpHome"/>
   </div>
 </template>
@@ -12,11 +12,11 @@ import HelpList from '@/components/HelpList.vue'
 export default {
   name: 'Home',
   components: {
-    HelpList,
+    HelpList
   },
   data () {
     return {
-      allHelps: [],
+      allHelps: []
     }
   },
   created () {
