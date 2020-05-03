@@ -1,47 +1,7 @@
 <template>
-  <v-app-bar flat dense  app class="semitransp">
-    <div>
-        <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-        <v-navigation-drawer
-          v-model="drawer"
-          bottom
-          clipped
-          fixed
-          xs
-          :width="windowWidth"
-        >
-          <v-list nav dense>
-            <v-list-item-group v-model="group">
-
-            <v-list-item @click="drawer = false">
-              <v-icon>mdi-close</v-icon>
-            </v-list-item>
-
-              <v-divider></v-divider>
-
-              <v-list-item class="mb-0">
-                <v-list-item-title style="height:50px" class="d-flex align-center d-flex align-center">Foo</v-list-item-title>
-              </v-list-item>
-
-              <v-divider></v-divider>
-
-              <v-list-item class="mb-0">
-                <v-list-item-title style="height:50px" class="d-flex align-center d-flex align-center"  >Bar</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item class="mb-0">
-                <v-list-item-title style="height:50px" class="d-flex align-center d-flex align-center" >Fizz</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item class="mb-0">
-                <v-list-item-title style="height:50px" class="d-flex align-center d-flex align-center" >Buzz</v-list-item-title>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
-        </v-navigation-drawer>
-      </div>
-
+  <div>
+    <v-app-bar flat dense app class="semitransp overflow-hidden" >
+      <v-app-bar-nav-icon @click="drawer = !drawer" color="secondary"></v-app-bar-nav-icon>
     <v-spacer></v-spacer>
     <router-link to="/">
       <h2 class="font">Aidbee</h2>
@@ -57,12 +17,75 @@
       <v-avatar color="secondary" size="30">
         <span class="white--text">PP</span>
       </v-avatar>
-      <v-btn icon @click="logout" color="secondary">
+      <!-- <v-btn icon @click="logout" color="secondary">
         <v-icon color="secondary">mdi-logout</v-icon>
-      </v-btn>
+      </v-btn> -->
     </div>
 
-  </v-app-bar>
+    </v-app-bar>
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      xs
+      temporary
+      :width="windowWidth"
+      color="terciary"
+    >
+    <v-list nav dense>
+      <v-list-item-group>
+
+      <v-list-item @click="drawer = false">
+        <v-icon color="secondary2">mdi-close</v-icon>
+      </v-list-item>
+
+        <v-divider></v-divider>
+
+        <v-layout mt-4 column align-center >
+          <v-flex>
+            <v-avatar>
+              <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+            </v-avatar>
+          </v-flex>
+          <v-flex>
+            <p class="secondary2--text mt-3 headline">{{name}}</p>
+          </v-flex>
+        </v-layout>
+
+        <v-divider></v-divider>
+
+        <v-list-item class="mb-0 d-flex align-start">
+          <v-list-item-icon>
+            <v-icon color="secondary2">mdi-offer</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title style="height:50px" class="d-flex align-center">Help I ask for</v-list-item-title>
+        </v-list-item>
+
+        <v-list-item class="mb-0">
+        <v-list-item-icon>
+            <v-icon color="secondary2">mdi-handshake</v-icon>
+        </v-list-item-icon>
+          <v-list-item-title style="height:50px" class="d-flex align-center ">Help I offer</v-list-item-title>
+        </v-list-item>
+
+        <v-divider></v-divider>
+
+        <v-list-item class="mb-0">
+        <v-list-item-icon>
+          <v-icon color="secondary2">mdi-account-circle</v-icon>
+        </v-list-item-icon>
+          <v-list-item-title style="height:50px" class="d-flex align-center" >User Profile</v-list-item-title>
+        </v-list-item>
+
+        <v-list-item class="mb-0" @click="logout" color="secondary">
+          <v-list-item-icon>
+          <v-icon color="secondary2">mdi-logout</v-icon>
+        </v-list-item-icon> 
+          <v-list-item-title style="height:50px" class="d-flex align-center" >Log Out</v-list-item-title>
+        </v-list-item>
+      </v-list-item-group>
+    </v-list>
+    </v-navigation-drawer>
+  </div>
 </template>
 
 <script>
@@ -70,7 +93,9 @@
 export default {
   name: 'Navbar',
   data: () => ({
-    drawer: false
+    drawer: false,
+    windowWidth: '',
+    name: localStorage.getItem("name")
   }),
   computed: {
     existsToken () {
@@ -83,16 +108,14 @@ export default {
       this.$router.push('/login')
     }
   },
-  mounted: {
-    function () {
-      this.status = !!localStorage.getItem('token')
-      this.$root.$on('log', status => {
-        this.status = status
-      })
-      this.windowWidth = window.innerWidth < 600 ? '75%' : '50%'
-      window.onresize = () => {
-        this.windowWidth = window.innerWidth < 600 ? '75%' : '50%'
-      }
+  mounted: function () {
+    this.status = localStorage.getItem('token') ? true : false;
+    this.$root.$on('log', status => {
+      this.status = status
+    })
+    this.windowWidth = window.innerWidth < 600 ? '75%' : '50%'
+     window.onresize = () => {
+       this.windowWidth = window.innerWidth < 600 ? '75%' : '50%'
     }
   }
 }
@@ -101,15 +124,8 @@ export default {
  <style lang='scss' scoped>
 .font {
   color: #EDC1BB;
-  ;
 }
 
-* {
-  text-decoration-line: none;
-}
-.max {
-  width: auto !important;
-}
 .semitransp {
   background-color: rgba(4,49,112, 0.8) !important;
 }

@@ -39,10 +39,4 @@ export default {
   color: #EDC1BB;
 }
 
-* {
-  text-decoration-line: none;
-}
-.max {
-  width: auto !important;
-}
 </style>

@@ -1,6 +1,6 @@
 <template v-slot:activator="{ on }">
   <div class="home">
-    <v-btn color="secondary" class="secondary2--text" to="helps/new" >Create Help</v-btn>
+    <v-btn color="secondary" class="secondary2--text" to="helps/new" width="100%" >Create Help</v-btn>
     <HelpList :helps="allHelps" @deleteHelpList="deleteHelpHome"/>
   </div>
 </template>
