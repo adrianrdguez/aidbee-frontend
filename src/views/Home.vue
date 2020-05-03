@@ -12,11 +12,11 @@ import HelpList from '@/components/HelpList.vue'
 export default {
   name: 'Home',
   components: {
-    HelpList
+    HelpList,
   },
   data () {
     return {
-      allHelps: []
+      allHelps: [],
     }
   },
   created () {

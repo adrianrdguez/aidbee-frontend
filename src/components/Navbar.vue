@@ -1,10 +1,9 @@
 <template>
   <v-app-bar flat dense  app class="semitransp">
-
+    <v-spacer></v-spacer>
     <router-link to="/">
       <h2 class="font">Aidbee</h2>
     </router-link>
-
     <v-spacer></v-spacer>
 
     <div v-if="!existsToken">
@@ -21,12 +20,16 @@
         <v-icon color="secondary">mdi-logout</v-icon>
       </v-btn>
     </div>
-
+  
   </v-app-bar>
 </template>
+
 <script>
+
 export default {
   name: 'Navbar',
+  components: {
+  },
   computed: {
     existsToken () {
       return localStorage.getItem('token')

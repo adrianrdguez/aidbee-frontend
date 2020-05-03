@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col>
-        <HelpList :helps="allHelps" @deleteHelpList="deleteHelpHome"/>
+        <ShowHelp :help="help"/>
       </v-col>
     </v-row>
   </v-container>
@@ -10,29 +10,25 @@
 
 <script>
 import APIServices from '../services/Api'
-import HelpList from '@/components/HelpList.vue'
+import ShowHelp from '@/components/ShowHelp.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelpList
+    ShowHelp
   },
   data () {
     return {
-      allHelps: []
+      help: {}
     }
   },
   mounted () {
-    APIServices.getHelps()
-      .then(res => (this.allHelps = res))
+    APIServices.getHelpById(this.$route.params.id)
+      .then(res => (this.help = res))
+      .catch(err => {
+        console.log(err)
+      })
   },
-  methods: {
-    deleteHelpHome (idx) {
-      this.allHelps.splice(idx, 1)
-    },
-    addNewHelp (newHelp) {
-      this.allHelps.push(newHelp)
-    }
-  }
+  
 }
 </script>
