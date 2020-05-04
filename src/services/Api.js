@@ -34,13 +34,16 @@ export default {
     return response.data
   },
 
-  async getHelps () {
-    const response = await API.get('/me/helps/',
-      {
-        headers: {
-          token: localStorage.getItem('token')
-        }
-      })
+  async getHelps (query = false) {
+    const options = {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    }
+    if (query) {
+      options.me = true
+    }
+    const response = await API.get('/me/helps/', options)
     return response.data
   },
 
@@ -63,7 +66,7 @@ export default {
     return response.data
   },
 
-  async updateHelpById(helpId, helpUp) {
+  async updateHelpById (helpId, helpUp) {
     const response = await API.put(`/me/helps/${helpId}`, {
       ...helpUp
     }, {

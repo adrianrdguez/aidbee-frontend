@@ -8,7 +8,7 @@
               <v-col cols="12" sm="6">
               <v-select
                 v-model="help_type"
-                :items="['health', 'food', 'other']"
+                :items="['Health', 'Food', 'Other']"
                 label="Type of help*"
                 required
                 color="secondary"

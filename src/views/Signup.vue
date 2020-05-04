@@ -111,6 +111,7 @@ export default {
       APIServices.signup(newUser)
         .then(response => {
           localStorage.setItem('token', response.token)
+          localStorage.setItem('name', response.name)
           this.$router.push('/home')
         })
         .catch(err => console.log(err))

@@ -58,8 +58,11 @@ export default {
       }
       APIServices.login(user)
         .then(response => {
-          if (response.token) {
+          if (response.error) {
+            this.userInvalid = true
+          } else {
             localStorage.setItem('token', response.token)
+            localStorage.setItem('name', response.name)
             this.$router.push('/home')
           }
         })

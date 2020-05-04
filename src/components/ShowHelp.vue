@@ -30,6 +30,7 @@
         <v-btn  color="secondary2 white--text" to="/home">Cancel</v-btn>
         <v-spacer></v-spacer>
         <v-btn  color="secondary2 white--text" @click="edit">Edit Help</v-btn>
+        <v-btn text color="secondary2" @click="deleteHelpById(help._id)">Delete Help</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -37,6 +38,11 @@
 <script>
 import APIServices from '../services/Api'
 export default {
+  props: {
+    help: Object,
+    helpIdx: Number,
+    deleteHelpCard: Function
+  },
   data () {
     return {
       typeOfHelp: '',
@@ -60,6 +66,15 @@ export default {
       APIServices.updateHelpById(this.$route.params.id, upHelp)
         .then(() => {
           this.$router.push('/home')
+        })
+        .catch(err => console.log(err))
+    },
+    deleteHelpById (helpId) {
+      APIServices.deleteHelpById(helpId)
+        .then(() => {
+          this.$emit('deleteHelpCard', this.helpIdx)
+          this.$router.push('/home')
+          location.reload()
         })
         .catch(err => console.log(err))
     }

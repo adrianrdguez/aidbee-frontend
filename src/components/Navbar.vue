@@ -2,10 +2,13 @@
   <div>
     <v-app-bar flat dense app class="semitransp overflow-hidden" >
       <v-app-bar-nav-icon @click="drawer = !drawer" color="secondary"></v-app-bar-nav-icon>
+
     <v-spacer></v-spacer>
+
     <router-link to="/">
       <h2 class="font">Aidbee</h2>
     </router-link>
+
     <v-spacer></v-spacer>
 
     <div v-if="!existsToken">
@@ -15,7 +18,7 @@
 
     <div v-else>
       <v-avatar color="secondary" size="30">
-        <span class="white--text">PP</span>
+        <span class="white--text">{{name[0].toUpperCase()}}</span>
       </v-avatar>
       <!-- <v-btn icon @click="logout" color="secondary">
         <v-icon color="secondary">mdi-logout</v-icon>
@@ -23,6 +26,7 @@
     </div>
 
     </v-app-bar>
+
     <v-navigation-drawer
       v-model="drawer"
       fixed
@@ -47,43 +51,44 @@
             </v-avatar>
           </v-flex>
           <v-flex>
-            <p class="secondary2--text mt-3 headline">{{name}}</p>
+            <p class="secondary2--text mt-3 headline">{{name.toUpperCase()}}</p>
           </v-flex>
         </v-layout>
 
         <v-divider></v-divider>
 
-        <v-list-item class="mb-0 d-flex align-start">
+          <v-list-item class="mb-0 d-flex align-start">
+            <v-list-item-icon>
+              <v-icon color="secondary2" class="display">mdi-offer</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title style="height:50px" class="d-flex align-center text body-1">Help I ask for</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item class="mb-0">
           <v-list-item-icon>
-            <v-icon color="secondary2">mdi-offer</v-icon>
+              <v-icon color="secondary2">mdi-handshake</v-icon>
           </v-list-item-icon>
-          <v-list-item-title style="height:50px" class="d-flex align-center">Help I ask for</v-list-item-title>
-        </v-list-item>
+            <v-list-item-title style="height:50px" class="d-flex align-center text body-1">Help I offer</v-list-item-title>
+          </v-list-item>
 
-        <v-list-item class="mb-0">
-        <v-list-item-icon>
-            <v-icon color="secondary2">mdi-handshake</v-icon>
-        </v-list-item-icon>
-          <v-list-item-title style="height:50px" class="d-flex align-center ">Help I offer</v-list-item-title>
-        </v-list-item>
-
-        <v-divider></v-divider>
-
-        <v-list-item class="mb-0">
-        <v-list-item-icon>
-          <v-icon color="secondary2">mdi-account-circle</v-icon>
-        </v-list-item-icon>
-          <v-list-item-title style="height:50px" class="d-flex align-center" >User Profile</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item class="mb-0" @click="logout" color="secondary">
-          <v-list-item-icon>
-          <v-icon color="secondary2">mdi-logout</v-icon>
-        </v-list-item-icon> 
-          <v-list-item-title style="height:50px" class="d-flex align-center" >Log Out</v-list-item-title>
-        </v-list-item>
       </v-list-item-group>
     </v-list>
+      <template v-slot:append>
+        <v-divider></v-divider>
+          <v-list-item class="mb-0">
+          <v-list-item-icon>
+            <v-icon color="secondary2">mdi-account-circle</v-icon>
+          </v-list-item-icon>
+            <v-list-item-title style="height:50px" class="d-flex align-center" >User Profile</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item class="mb-0" @click="logout" color="secondary">
+            <v-list-item-icon>
+            <v-icon color="secondary2">mdi-logout</v-icon>
+          </v-list-item-icon>
+            <v-list-item-title style="height:50px" class="d-flex align-center" >Log Out</v-list-item-title>
+          </v-list-item>
+      </template>
     </v-navigation-drawer>
   </div>
 </template>
@@ -93,9 +98,9 @@
 export default {
   name: 'Navbar',
   data: () => ({
+    name: localStorage.getItem('name'),
     drawer: false,
-    windowWidth: '',
-    name: localStorage.getItem("name")
+    windowWidth: ''
   }),
   computed: {
     existsToken () {
@@ -109,13 +114,13 @@ export default {
     }
   },
   mounted: function () {
-    this.status = localStorage.getItem('token') ? true : false;
+    this.status = !!localStorage.getItem('token')
     this.$root.$on('log', status => {
       this.status = status
     })
-    this.windowWidth = window.innerWidth < 600 ? '75%' : '50%'
-     window.onresize = () => {
-       this.windowWidth = window.innerWidth < 600 ? '75%' : '50%'
+    this.windowWidth = window.innerWidth < 600 ? '75%' : '40%'
+    window.onresize = () => {
+      this.windowWidth = window.innerWidth < 600 ? '75%' : '40%'
     }
   }
 }
@@ -129,4 +134,9 @@ export default {
 .semitransp {
   background-color: rgba(4,49,112, 0.8) !important;
 }
+
+.d-flex {
+  color: #043170
+}
+
 </style>
