@@ -5,10 +5,10 @@
         <v-col cols="12" sm="8" md="6" lg="4">
             <h1 class="mt-12 white--text">¡Bienvenido a Aidbee!</h1>
             <br />
-            <h2 class="white--text">¿No puedes salir de casa? Pide ayuda a algún voluntario local. ¿Te gustaría ayudar a tus vecinos?Entrega objetos esenciales a vecinos del alredor.</h2>
+            <h2 class="white--text">¿No puedes salir de casa? Pide ayuda a algún voluntario local. ¿Te gustaría ayudar a tus vecinos? Entrega objetos esenciales a vecinos del alredor.</h2>
           </v-col>
         <v-col cols="12" sm="8" md="6" lg="4">
-          <v-card class="elevation-5">
+          <v-card class="elevation-3 transparent">
             <v-toolbar color="primary" dark flat >
               <v-spacer />
               <v-toolbar-title>Sign Up</v-toolbar-title>
@@ -16,11 +16,14 @@
             </v-toolbar>
             <v-card-text>
               <v-form>
-                <v-text-field
+              <v-text-field
               label="Name"
               v-model="name"
               prepend-icon="mdi-account-circle"
               :rules="userRules"
+              outlined
+              dark
+              color="primary"
             ></v-text-field>
 
             <v-text-field
@@ -28,6 +31,9 @@
               v-model="surname"
               prepend-icon="mdi-account-circle"
               :rules="surnameRules"
+              outlined
+              dark
+              color="primary"
             ></v-text-field>
 
             <v-text-field
@@ -35,6 +41,9 @@
               v-model="email"
               :rules="emailRules"
               prepend-icon="mdi-email"
+              outlined
+              dark
+              color="primary"
             ></v-text-field>
 
             <v-text-field
@@ -42,6 +51,9 @@
               v-model="telephone"
               prepend-icon="mdi-cellphone"
               :rules="telephoneRules"
+              outlined
+              dark
+              color="primary"
             ></v-text-field>
 
             <v-text-field
@@ -52,6 +64,9 @@
               :rules="passwordRule"
               :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="showPassword = !showPassword"
+              outlined
+              dark
+              color="primary"
             ></v-text-field>
               </v-form>
             </v-card-text>
