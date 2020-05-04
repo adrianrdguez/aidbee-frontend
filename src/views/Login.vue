@@ -3,7 +3,7 @@
     <v-container class="fill-height">
       <v-row align="center" justify="center" >
         <v-col cols="12" sm="8" md="6" lg="4">
-          <v-card class="elevation-3 transparent">
+          <v-card class="elevation-3">
             <v-toolbar color="primary" dark flat >
               <v-spacer />
               <v-toolbar-title class="text-center">Login</v-toolbar-title>
@@ -18,11 +18,10 @@
                 :rules="emailRules"
                 prepend-icon="mdi-email"
                 outlined
-                dark
                 color="primary"
                 >
                 </v-text-field>
-r
+
                 <v-text-field
                 class="password"
                 label="Password"
@@ -33,7 +32,6 @@ r
                 :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                 @click:append="showPassword = !showPassword"
                 outlined
-                dark
                 color="primary"
                 >
                 </v-text-field>
@@ -42,7 +40,7 @@ r
             </v-card-text>
             <v-card-actions>
               <v-spacer />
-              <v-btn class='button' color="primary" @click="login">Inicia sesión</v-btn>
+              <v-btn class="button" color="primary" @click="login">Inicia sesión</v-btn>
               <v-spacer />
             </v-card-actions>
             <!-- <h6 class='text2'>Aun no tienes cuenta? <router-link class='lgbtn' to="/signup">Create Una Aquí</router-link></h6> -->
@@ -110,5 +108,9 @@ export default {
 .color{
   background: linear-gradient(180deg, #043170 0%, #EDC1BB 100%);
   height: 100vh;
+}
+
+.button {
+  bottom: 20px;
 }
 </style>

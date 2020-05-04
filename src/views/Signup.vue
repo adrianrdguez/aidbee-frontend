@@ -8,7 +8,7 @@
             <h2 class="white--text">¿No puedes salir de casa? Pide ayuda a algún voluntario local. ¿Te gustaría ayudar a tus vecinos? Entrega objetos esenciales a vecinos del alredor.</h2>
           </v-col>
         <v-col cols="12" sm="8" md="6" lg="4">
-          <v-card class="elevation-3 transparent">
+          <v-card class="elevation-3">
             <v-toolbar color="primary" dark flat >
               <v-spacer />
               <v-toolbar-title>Sign Up</v-toolbar-title>
@@ -22,7 +22,6 @@
               prepend-icon="mdi-account-circle"
               :rules="userRules"
               outlined
-              dark
               color="primary"
             ></v-text-field>
 
@@ -32,7 +31,6 @@
               prepend-icon="mdi-account-circle"
               :rules="surnameRules"
               outlined
-              dark
               color="primary"
             ></v-text-field>
 
@@ -42,7 +40,6 @@
               :rules="emailRules"
               prepend-icon="mdi-email"
               outlined
-              dark
               color="primary"
             ></v-text-field>
 
@@ -52,7 +49,6 @@
               prepend-icon="mdi-cellphone"
               :rules="telephoneRules"
               outlined
-              dark
               color="primary"
             ></v-text-field>
 
@@ -65,7 +61,6 @@
               :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="showPassword = !showPassword"
               outlined
-              dark
               color="primary"
             ></v-text-field>
               </v-form>
@@ -75,7 +70,6 @@
               <v-btn class='button' color="primary" @click="signup">Únete</v-btn>
               <v-spacer />
             </v-card-actions>
-            <!-- <h6 class='text2'>Ya tienes cuenta pescao? <router-link class='lgbtn' to="/login">Inicia Sesion Aqui</router-link></h6> -->
 
           </v-card>
         </v-col>
@@ -109,7 +103,7 @@ export default {
       telephone: '',
       telephoneRules: [
         v => !!v || 'Telephone is required',
-        v => v.length >= 9 || 'Telephone must be more than 9 characters'
+        v => /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(v) || 'Telephone must be valid',
       ]
     }
   },
@@ -146,4 +140,10 @@ export default {
   background: linear-gradient(180deg, #043170 0%, #EDC1BB 100%);
   height: 100vh;
 }
+
+.button {
+  bottom: 20px;
+}
+
 </style>
+

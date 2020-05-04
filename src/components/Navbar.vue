@@ -4,8 +4,8 @@
       <h2 class="font">Aidbee</h2>
     </router-link>
 
-    <div class="d-none d-md-block d-print-block">
-      <div v-if="!existsToken"> <!-- NAVBAR NO LOGINEADO -->
+    <div>
+      <div v-if="!existsToken" > <!-- NAVBAR NO LOGINEADO -->
         <v-btn text to="/login" small class="mr-2" color="secondary">Iniciar sesión</v-btn>
         <v-btn to="/signup" rounded small color="secondary">Regístrate</v-btn>
       </div>
