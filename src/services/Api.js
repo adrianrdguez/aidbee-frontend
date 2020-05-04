@@ -61,5 +61,16 @@ export default {
         }
       })
     return response.data
+  },
+
+  async updateHelpById(helpId, helpUp) {
+    const response = await API.put(`/me/helps/${helpId}`, {
+      ...helpUp
+    }, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    return response.data
   }
 }

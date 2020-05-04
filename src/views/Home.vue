@@ -1,14 +1,14 @@
 <template v-slot:activator="{ on }">
   <div class="home">
-    <v-btn color="secondary" class="secondary2--text" to="helps/new" width="100%" >Create Help</v-btn>
+    <div class="button">
+    <v-btn color="secondary" class="secondary2--text" to="helps/new" >Create Help</v-btn>
+    </div>
     <HelpList :helps="allHelps" @deleteHelpList="deleteHelpHome"/>
   </div>
 </template>
-
 <script>
 import APIServices from '../services/Api'
 import HelpList from '@/components/HelpList.vue'
-
 export default {
   name: 'Home',
   components: {
@@ -33,3 +33,9 @@ export default {
   }
 }
 </script>
+<style lang="css">
+.button{
+  display: flex;
+  justify-content: center;
+}
+</style>

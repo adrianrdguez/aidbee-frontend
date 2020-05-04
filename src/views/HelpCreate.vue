@@ -61,7 +61,7 @@ export default {
         address: this.address,
         text: this.text,
         telephone: this.telephone,
-        addInfo: this.addInfo
+        additional_info: this.addInfo
       }
       APIServices.createHelp(newHelp)
         .then(newHelp => {

@@ -8,39 +8,75 @@
               <v-col cols="12" sm="6">
             </v-col>
             <v-col cols="12">
-              <v-text-field dark color="secondary" label="Type of help" required> </v-text-field>
+              <v-text-field dark color="secondary" label="Type of help" required v-model="typeOfHelp"></v-text-field>
             </v-col>
             <v-col cols="12">
-              <v-text-field dark color="secondary" label="Help Title" required  placeholder="ie. I need my medicines"></v-text-field>
+              <v-text-field dark color="secondary" label="Help Title" required  v-model="request_title"></v-text-field>
             </v-col>
             <v-col cols="12">
-              <v-text-field dark color="secondary" label="Address" required ></v-text-field>
+              <v-text-field dark color="secondary" label="Address" required v-model="address"></v-text-field>
             </v-col>
             <v-col cols="12">
-              <v-text-field dark color="secondary" label="What do you need?" required ></v-text-field>
+              <v-text-field dark color="secondary" label="What do you need?" required v-model="text"></v-text-field>
             </v-col>
             <v-col cols="12">
-              <v-text-field dark color="secondary" label="Telephone" required></v-text-field>
+              <v-text-field dark color="secondary" label="Telephone" required v-model="telephone"></v-text-field>
             </v-col>
             <v-col cols="12">
-              <v-text-field dark color="secondary" label="Additional Information" required></v-text-field>
+              <v-text-field dark color="secondary" label="Additional Information" required v-model="addInfo"></v-text-field>
             </v-col>
           </v-row>
         </v-container>
         <v-btn  color="secondary2 white--text" to="/home">Cancel</v-btn>
         <v-spacer></v-spacer>
-        <v-btn  color="secondary2 white--text">Create Help</v-btn>
+        <v-btn  color="secondary2 white--text" @click="edit">Edit Help</v-btn>
       </v-col>
     </v-row>
   </v-container>
 </template>
-
 <script>
-  export default {
-    
+import APIServices from '../services/Api'
+export default {
+  data () {
+    return {
+      typeOfHelp: '',
+      request_title: '',
+      address: '',
+      text: '',
+      telephone: '',
+      addInfo: ''
+    }
+  },
+  methods: {
+    edit () {
+      const upHelp = {
+        help_type: this.help_type,
+        request_title: this.request_title,
+        address: this.address,
+        text: this.text,
+        telephone: this.telephone,
+        additional_info: this.addInfo
+      }
+      APIServices.updateHelpById(this.$route.params.id, upHelp)
+        .then(() => {
+          this.$router.push('/home')
+        })
+        .catch(err => console.log(err))
+    }
+  },
+  mounted () {
+    APIServices.getHelpById(this.$route.params.id)
+      .then(help => {
+        this.typeOfHelp = help.help_type
+        this.request_title = help.request_title
+        this.address = help.address
+        this.text = help.text
+        this.telephone = help.telephone
+        this.addInfo = help.additional_info
+      })
   }
+}
 </script>
 
 <style lang="scss" scoped>
-
 </style>
