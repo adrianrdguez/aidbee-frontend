@@ -13,7 +13,7 @@
 
     <v-spacer></v-spacer>
       <v-avatar color="secondary" size="30">
-        <span class="white--text">{{name[0]}}</span>
+        <span class="white--text">{{name[0].toUpperCase()}}</span>
       </v-avatar>
 
     </v-app-bar>

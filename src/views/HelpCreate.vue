@@ -76,10 +76,10 @@
                 placeholder="ie. My doorbell doesn´t work."
                 >
                 </v-text-field>
+              <small class="small" dark>*indicates required field</small><br>
               </v-col>
             </v-row>
           </v-container>
-          <small class="small" dark>*indicates required field</small><br>
          <div class="buttons">
         <v-btn  class="cancel" color="secondary secondary2--text" to="/home">Cancel</v-btn>
         <v-btn class="create" color="secondary2 secondary--text" @click="save">Create Help</v-btn>
@@ -124,7 +124,7 @@ export default {
 <style lang="scss" scoped>
 .small {
   color: white;
-  bottom: 50px;
+  bottom: -100px;
   margin-left: 10px;
 }
 .create{
