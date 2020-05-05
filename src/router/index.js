@@ -7,6 +7,7 @@ import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
 import HelpShow from '../views/HelpShow.vue'
 import HelpCreate from '../views/HelpCreate.vue'
+import Mapa from '../views/Mapa.vue'
 
 Vue.use(VueRouter)
 
@@ -54,6 +55,20 @@ const routes = [
     name: 'HelpShow',
     component: HelpShow,
     beforeEnter (to, from, next) {
+      if (!localStorage.getItem('token')) {
+        next({
+          name: 'Signup'
+        })
+      }
+      next()
+    }
+  },
+  {
+    path: '/mapa',
+    name: 'Mapa',
+    meta: { layout: 'default' },
+    component: Mapa,
+    beforeEnter(to, from, next) {
       if (!localStorage.getItem('token')) {
         next({
           name: 'Signup'

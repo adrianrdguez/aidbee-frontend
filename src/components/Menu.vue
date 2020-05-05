@@ -9,13 +9,13 @@
     color="secondary"
     >
 
-    <v-btn value="getHelp" width="30%">
+    <v-btn value="getHelp" width="30%" to="/home">
       <span>Get Help</span>
       <v-icon>mdi-history</v-icon>
     </v-btn>
 
-    <v-btn value="offerHelp" width="30%" color="">
-      <span >Offer Help</span>
+    <v-btn value="offerHelp" width="30%" color="" to="/mapa">
+      <span>Offer Help</span>
       <v-icon>mdi-history</v-icon>
     </v-btn>
 

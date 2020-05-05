@@ -10,10 +10,9 @@
       <h2 class="font">Aidbee</h2>
     </router-link>
 
-
     <v-spacer></v-spacer>
       <v-avatar color="secondary" size="30">
-        <span class="white--text">{{name[0]}}</span>
+        <span class="white--text">{{name[0].toUpperCase()}}</span>
       </v-avatar>
 
     </v-app-bar>
@@ -87,40 +86,40 @@
 </template>
 
 <script>
-import Menu from "@/components/Menu.vue";
+import Menu from '@/components/Menu.vue'
 
 export default {
-  name: "Default",
+  name: 'Default',
   data: () => ({
-    name: localStorage.getItem("name"),
+    name: localStorage.getItem('name'),
     drawer: false,
-    windowWidth: ""
+    windowWidth: ''
   }),
   components: {
     Menu
   },
   computed: {
-    existsToken() {
-      return localStorage.getItem("token");
+    existsToken () {
+      return localStorage.getItem('token')
     }
   },
   methods: {
-    logout() {
-      localStorage.clear();
-      this.$router.push("/login");
+    logout () {
+      localStorage.clear()
+      this.$router.push('/login')
     }
   },
-  mounted: function() {
-    this.status = !!localStorage.getItem("token");
-    this.$root.$on("log", status => {
-      this.status = status;
-    });
-    this.windowWidth = window.innerWidth < 600 ? "75%" : "40%";
+  mounted: function () {
+    this.status = !!localStorage.getItem('token')
+    this.$root.$on('log', status => {
+      this.status = status
+    })
+    this.windowWidth = window.innerWidth < 600 ? '75%' : '40%'
     window.onresize = () => {
-      this.windowWidth = window.innerWidth < 600 ? "75%" : "40%";
-    };
+      this.windowWidth = window.innerWidth < 600 ? '75%' : '40%'
+    }
   }
-};
+}
 </script>
 
 <style lang='scss' scoped>
