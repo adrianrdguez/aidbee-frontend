@@ -81,8 +81,8 @@
           </v-container>
           <small class="small" dark>*indicates required field</small><br>
          <div class="buttons">
-         <v-btn  color="secondary secondary2--text" to="/home">Cancel</v-btn>
-          <v-btn class="create" color="secondary2 secondary--text" @click="save">Create Help</v-btn>
+        <v-btn  class="cancel" color="secondary secondary2--text" to="/home">Cancel</v-btn>
+        <v-btn class="create" color="secondary2 secondary--text" @click="save">Create Help</v-btn>
          </div>
       </v-col>
     </v-row>
@@ -133,5 +133,9 @@ export default {
 
 .headline-1 {
   margin-left: 10px;
+}
+
+.buttons{
+text-align: center;
 }
 </style>
