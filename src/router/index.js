@@ -13,6 +13,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',
+    name: 'Welcome',
+    redirect: { name: 'Signup' }
+  },
+  {
     path: '/login',
     name: 'Login',
     meta: { layout: 'simple' },
@@ -68,7 +73,7 @@ const routes = [
     name: 'Mapa',
     meta: { layout: 'default' },
     component: Mapa,
-    beforeEnter(to, from, next) {
+    beforeEnter (to, from, next) {
       if (!localStorage.getItem('token')) {
         next({
           name: 'Signup'

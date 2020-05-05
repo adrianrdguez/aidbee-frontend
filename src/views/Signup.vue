@@ -103,7 +103,7 @@ export default {
       telephone: '',
       telephoneRules: [
         v => !!v || 'Telephone is required',
-        v => /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(v) || 'Telephone must be valid',
+        v => /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/.test(v) || 'Telephone must be valid'
       ]
     }
   },
@@ -146,4 +146,3 @@ export default {
 }
 
 </style>
-
