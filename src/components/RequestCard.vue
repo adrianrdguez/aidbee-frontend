@@ -12,7 +12,6 @@
       <div class="texto secondary2--text">
         {{ request.help.additional_info }}
       </div>
-      </br>
       <v-divider></v-divider>
       <div class="texto secondary2--text">
         {{ request.help.requester.name }}
@@ -27,7 +26,6 @@
       <div class="texto secondary2--text">
         {{ request.status }}
       </div>
-      </br>
 
       <v-btn  color="secondary secondary2--text" @click="removeHelpRequest(request._id)" class="center">Cancel Request Help</v-btn>
     </v-card-text>
