@@ -27,16 +27,28 @@
       <div class="texto secondary2--text">
         {{ request.status }}
       </div>
+      </br>
+
+      <v-btn  color="secondary secondary2--text" @click="removeHelpRequest(request._id)" class="center">Cancel Request Help</v-btn>
     </v-card-text>
   </v-card>
 </template>
 
 <script>
+import APIServices from '../services/Api'
 
 export default {
   props: {
     request: Object,
     requestIdx: Number
+  },
+  methods: {
+    removeHelpRequest (requestId) {
+      APIServices.removeHelpRequest(requestId)
+        .then(() => {
+          location.reload()
+        })
+    }
   }
 }
 </script>
@@ -44,5 +56,9 @@ export default {
 <style lang="scss">
   .texto{
     margin-top: 20px;
+  }
+
+  .center {
+    left: 55px;
   }
 </style>

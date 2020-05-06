@@ -15,24 +15,25 @@
               >
               <v-card-text>
                 <div>
-                  {{help.help_type}}
+                  Type of help: {{help.help_type}}
                 </div>
+                </br>
                 <p class="display-1 text--primary">
-                  {{help.request_title}}
+                  Help: {{help.request_title}}
                 </p>
                 <p></p>
-                  {{help.requester.name}}
+                  User name: {{help.requester.name}}
                 </p>
                 <div class="text--primary">
-                  Dirección:{{help.address}}
+                  Address :{{help.address}}
                 </div>
                 </br>
                 <div class="text--primary">
-                  {{help.text}}
+                 Information: {{help.text}}
                 </div>
                 </br>
                 <div class="text--primary">
-                  {{help.telephone}}
+                 Telephone number: {{help.telephone}}
                 </div>
               </v-card-text>
               <v-card-actions>

@@ -40,7 +40,7 @@
 
           <v-divider></v-divider>
 
-          <v-list-item class="mb-0 d-flex align-start">
+          <v-list-item class="mb-0 d-flex align-start" to="/myhelps">
             <v-list-item-icon>
               <v-icon color="secondary2" class="display">mdi-offer</v-icon>
             </v-list-item-icon>

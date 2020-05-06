@@ -100,5 +100,14 @@ export default {
       }
     })
     return response.data
+  },
+
+  async removeHelpRequest (requestId) {
+    const response = await API.delete(`/me/requests/helpId/requests/${requestId}`, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    return response.data
   }
 }

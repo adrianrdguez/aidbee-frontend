@@ -1,96 +1,7 @@
 <template>
   <v-container class="justify-center">
     <v-row justify="center">
-<<<<<<< HEAD
-<<<<<<< HEAD
       <v-col cols="12" sm="8" md="6">
-        <h2 class="headline-1 secondary--text">Request a delivery</h2>
-          <v-container>
-            <v-row>
-                <v-col cols="12" sm="6">
-                <v-select
-                  v-model="help_type"
-                  :items="['Health', 'Food', 'Other']"
-                  label="Type of help *"
-                  outlined
-                  required
-                  color="secondary"
-                  dark
-                  placeholder="ie. Food"
-                ></v-select>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                dark
-                color="secondary"
-                label="Help Title *"
-                outlined
-                required
-                v-model="request_title"
-                placeholder="ie. I need my medicines"
-                >
-                </v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                dark
-                color="secondary"
-                label="Address *"
-                outlined
-                required
-                v-model="address"
-                placeholder="ie. Calle Fernando Guanarteme 95, 1A"
-                >
-                </v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                dark
-                color="secondary"
-                label="What do you need? *"
-                outlined
-                required
-                v-model="text"
-                placeholder="ie. I have a headache and I do not have my medicines"
-                >
-                </v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                dark
-                color="secondary"
-                label="Telephone *"
-                outlined
-                required
-                v-model="telephone"
-                placeholder="ie. 639874512"
-                >
-                </v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                dark
-                color="secondary"
-                label="Additional Information"
-                outlined
-                required
-                v-model="addInfo"
-                placeholder="ie. My doorbell doesn´t work."
-                >
-                </v-text-field>
-              <small class="small" dark>*indicates required field</small><br>
-              </v-col>
-            </v-row>
-          </v-container>
-         <div class="buttons">
-        <v-btn  class="cancel" color="secondary secondary2--text" to="/home">Cancel</v-btn>
-        <v-btn class="create" color="secondary2 secondary--text" @click="save">Create Help</v-btn>
-         </div>
-=======
-      <v-col cols="12" xl="6" lg="6">
-=======
-      <v-col cols="12" sm="8" md="6" lg="4">
->>>>>>> 06280780f599e267d426b21d63f0e4baa34f4225
         <v-col>
           <h2 class="headline-1 secondary--text">Request a delivery</h2>
         </v-col>
@@ -186,7 +97,6 @@
         <v-col>
           <Mapa @clickedEvent="clicked"></Mapa>
         </v-col>
->>>>>>> 01fa0e11719c3a709ae925e8d33e4aedb8034e42
       </v-col>
     </v-row>
   </v-container>
