@@ -93,8 +93,8 @@ export default {
     return response.data
   },
 
-  async getAllMyHelpRequests () {
-    const response = await API.get('/me/requests/', {
+  async removeHelpRequest (requestId) {
+    const response = await API.delete(`/me/requests/helpId/requests/${requestId}`, {
       headers: {
         token: localStorage.getItem('token')
       }
@@ -102,12 +102,23 @@ export default {
     return response.data
   },
 
-  async removeHelpRequest (requestId) {
-    const response = await API.delete(`/me/requests/helpId/requests/${requestId}`, {
+  async seeAllHelpRequestForAHelp () {
+    const options = {
       headers: {
         token: localStorage.getItem('token')
       }
-    })
+    }
+    const response = await API.get('/me/helps/helpId/requests', options)
+    return console.log(response.data)
+  },
+
+  async getAllMyHelpRequests () {
+    const options = {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    }
+    const response = await API.get('/me/helps/helpId/requests', options)
     return response.data
   }
 }

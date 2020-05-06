@@ -3,6 +3,9 @@
     <div class="button">
     <v-btn large color="secondary" class="secondary2--text"  to="helps/new" >Create  Help</v-btn>
     </div>
+    <div>
+    <h1 class="secondary--text">Your Helps</h1>
+    </div>
     <HelpList :helps="allHelps" @deleteHelpList="deleteHelpHome"/>
   </div>
 </template>

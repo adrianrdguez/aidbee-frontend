@@ -9,6 +9,7 @@ import HelpShow from '../views/HelpShow.vue'
 import HelpCreate from '../views/HelpCreate.vue'
 import Mapa from '../views/Mapa.vue'
 import Requests from '../views/Requests.vue'
+import Requester from '../views/Requester.vue';
 
 Vue.use(VueRouter)
 
@@ -88,6 +89,20 @@ const routes = [
     name: 'Requests',
     meta: { layout: 'default' },
     component: Requests,
+    beforeEnter (to, from, next) {
+      if (!localStorage.getItem('token')) {
+        next({
+          name: 'Signup'
+        })
+      }
+      next()
+    }
+  },
+  {
+    path: '/myhelps',
+    name: 'Requester',
+    meta: { layout: 'default' },
+    component: Requester,
     beforeEnter (to, from, next) {
       if (!localStorage.getItem('token')) {
         next({

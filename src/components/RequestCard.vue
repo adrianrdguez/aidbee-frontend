@@ -14,7 +14,7 @@
       </div>
       <v-divider></v-divider>
       <div class="texto secondary2--text">
-        {{ request.help.requester.name }}
+        {{ request.help.requester }}
       </div>
       <div class="texto secondary2--text">
         {{ request.help.address }}
