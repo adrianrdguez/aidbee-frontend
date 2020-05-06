@@ -7,8 +7,10 @@
   </div>
 </template>
 <script>
+
 import APIServices from '../services/Api'
 import HelpList from '@/components/HelpList.vue'
+
 export default {
   name: 'Home',
   components: {
@@ -33,11 +35,12 @@ export default {
   }
 }
 </script>
-<style lang="css">
 
+<style lang="css">
 .button{
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
+
 </style>

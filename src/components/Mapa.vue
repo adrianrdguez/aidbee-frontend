@@ -1,80 +1,38 @@
 <template>
-  <div id="app">
-    <mapbox
-      access-token="pk.eyJ1IjoiYWRyaXJvZHJpbmF2YXMiLCJhIjoiY2s5OHMyZzVjMDRxbTNtbzQ5NzlyaW1rOSJ9.3EtvwOq2t8OtEZXLBDhXYw"
-      :map-options="{
-        style: 'mapbox://styles/adrirodrinavas/ck9u93xyj039s1iqlr12oidvd',
-        center: [-15.436009, 28.117173],
-        zoom: 13,
-      }"
-      :geolocate-control="{
-        show: true,
-        position: 'top-left',
-      }"
-      @map-load="loaded"
-      @map-click="clicled"
-    />
+  <div id="map">
+    <MglMap :accessToken="accessToken" :mapStyle="mapStyle" @load="onMapLoad">
+      <MglMarker v-if="coordinates != ''" :coordinates="coordinates" color="blue" />
+    </MglMap>
   </div>
 </template>
 
 <script>
-import Mapbox from 'mapbox-gl-vue'
+import Mapbox from 'mapbox-gl'
+import { MglMap, MglMarker } from 'vue-mapbox'
 
 export default {
-  props: {
-    elcliclado: Function
+  components: {
+    MglMap,
+    MglMarker
   },
-  components: { Mapbox },
   data () {
     return {
-      markers: []
+      accessToken: 'pk.eyJ1IjoiYWRyaXJvZHJpbmF2YXMiLCJhIjoiY2s5OHMyZzVjMDRxbTNtbzQ5NzlyaW1rOSJ9.3EtvwOq2t8OtEZXLBDhXYw',
+      mapStyle: 'mapbox://styles/adrirodrinavas/ck9u93xyj039s1iqlr12oidvd',
+      coordinates: ''
     }
   },
+  props: {
+    clickedEvent: Function
+  },
+  created () {
+    this.mapbox = Mapbox
+  },
   methods: {
-    clicled (map, position) {
-      this.$emit('elcliclado', position)
-    },
-    loaded (map) {
-      map.addLayer({
-        id: 'points',
-        type: 'symbol',
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: [
-              {
-                type: 'Feature',
-                geometry: {
-                  type: 'Point',
-                  coordinates: [-77.03238901390978, 38.913188059745586]
-                },
-                properties: {
-                  title: 'Mapbox DC',
-                  icon: 'monument'
-                }
-              },
-              {
-                type: 'Feature',
-                geometry: {
-                  type: 'Point',
-                  coordinates: [-122.414, 37.776]
-                },
-                properties: {
-                  title: 'Mapbox SF',
-                  icon: 'harbor'
-                }
-              }
-            ]
-          }
-        },
-        layout: {
-          'icon-image': '{icon}-15',
-          'text-field': '{title}',
-          'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-          'text-offset': [0, 0.6],
-          'text-anchor': 'top'
-        }
+    onMapLoad ({ map }) {
+      map.on('click', e => {
+        this.coordinates = [e.lngLat.lng, e.lngLat.lat]
+        this.$emit('clickedEvent', e)
       })
     }
   }

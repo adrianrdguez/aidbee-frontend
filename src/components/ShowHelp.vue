@@ -93,8 +93,8 @@
             v-model="longitude"
             placeholder
           ></v-text-field>
+        <span class="small white--text" dark>*indicates required field</span>
         </v-col>
-        <small class="small" dark>*indicates required field</small>
         <br />
         <div class="button">
         <v-btn  color="secondary secondary2--text" to="/home">Cancel</v-btn>
@@ -107,7 +107,7 @@
           <h2 class="headline-1 secondary--text">Mark where you live</h2>
         </v-col>
         <v-col>
-          <Mapa @elcliclado="clicked"></Mapa>
+          <Mapa @elclicado="clicked"></Mapa>
         </v-col>
       </v-col>
     </v-row>
@@ -130,7 +130,7 @@ export default {
   },
   data () {
     return {
-      typeOfHelp: '',
+      help_type: '',
       request_title: '',
       address: '',
       text: '',
@@ -175,7 +175,7 @@ export default {
   mounted () {
     APIServices.getHelpById(this.$route.params.id)
       .then(help => {
-        this.typeOfHelp = help.help_type
+        this.help_type = help.help_type
         this.request_title = help.request_title
         this.address = help.address
         this.text = help.text
@@ -194,5 +194,8 @@ margin-left: 20px;
 }
 .delete{
 margin-left: 20px;
+}
+.small {
+  left: 90px;
 }
 </style>

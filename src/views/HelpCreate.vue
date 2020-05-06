@@ -94,7 +94,7 @@
             placeholder
           ></v-text-field>
         </v-col>
-        <small class="small" dark>*indicates required field</small>
+        <small class="small white--text" dark>*indicates required field</small>
         <br />
         <div class="buttons">
           <v-btn class="cancel" color="secondary secondary2--text" to="/home">Cancel</v-btn>
@@ -106,7 +106,7 @@
           <h2 class="headline-1 secondary--text">Mark where you live</h2>
         </v-col>
         <v-col>
-          <Mapa @elcliclado="clicked"></Mapa>
+          <Mapa @clickedEvent="clicked"></Mapa>
         </v-col>
       </v-col>
     </v-row>
@@ -130,6 +130,7 @@ export default {
   }),
   methods: {
     clicked (position) {
+      console.log(position)
       this.latitude = position.lngLat.lat
       this.longitude = position.lngLat.lng
     },
