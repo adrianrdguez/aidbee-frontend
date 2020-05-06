@@ -1,7 +1,7 @@
 <template>
   <v-container class="justify-center">
     <v-row justify="center">
-      <v-col cols="12" xl="6" lg="6">
+      <v-col cols="12" sm="8" md="6" lg="4">
         <v-col>
           <h2 class="headline-1 secondary--text">Request a delivery</h2>
         </v-col>
@@ -76,21 +76,10 @@
           <v-text-field
             dark
             color="secondary"
-            label="Latitude"
+            label="Coordinates"
             outlined
             required
-            v-model="latitude"
-            placeholder
-          ></v-text-field>
-        </v-col>
-        <v-col>
-          <v-text-field
-            dark
-            color="secondary"
-            label="Longitude"
-            outlined
-            required
-            v-model="longitude"
+            v-model="coordinates"
             placeholder
           ></v-text-field>
         <span class="small white--text" dark>*indicates required field</span>
@@ -101,13 +90,13 @@
         <v-btn class="delete" color="secondary secondary2--text" @click="deleteHelpById(help._id)">Delete Help</v-btn>
         <v-btn class="edit" color="secondary2 white--text" @click="edit">Edit Help</v-btn>
         </div>
-      </v-col>
-      <v-col cols="12" xl="6" lg="6">
+        </v-col>
+      <v-col cols="12" sm="8" md="6" lg="4">
         <v-col>
           <h2 class="headline-1 secondary--text">Mark where you live</h2>
         </v-col>
         <v-col>
-          <Mapa @elclicado="clicked"></Mapa>
+          <Mapa @clickedEvent="clicked"></Mapa>
         </v-col>
       </v-col>
     </v-row>
@@ -136,14 +125,12 @@ export default {
       text: '',
       telephone: '',
       addInfo: '',
-      latitude: '',
-      longitude: ''
+      coordinates: ''
     }
   },
   methods: {
     clicked (position) {
-      this.latitude = position.lngLat.lat
-      this.longitude = position.lngLat.lng
+      this.coordinates = position.lngLat
     },
     edit () {
       const upHelp = {
@@ -153,8 +140,7 @@ export default {
         text: this.text,
         telephone: this.telephone,
         additional_info: this.addInfo,
-        longitude: this.longitude,
-        latitude: this.latitude
+        coordinates: this.coordinates
       }
       APIServices.updateHelpById(this.$route.params.id, upHelp)
         .then(() => {
@@ -181,8 +167,7 @@ export default {
         this.text = help.text
         this.telephone = help.telephone
         this.addInfo = help.additional_info
-        this.latitude = help.latitude
-        this.longitude = help.longitude
+        this.coordinates = help.coordinates
       })
   }
 }

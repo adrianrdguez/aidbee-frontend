@@ -1,20 +1,53 @@
 <template>
   <div id="map">
     <MglMap :accessToken="accessToken" :mapStyle="mapStyle" @load="onMapLoad">
-      <div>
         <MglMarker
-          v-for="(coordinate, idx)  in coordinates"
+          v-for="(help, idx) in allHelps"
           :key="idx"
-          :coordinates="coordinate"
+          debugger
+          :coordinates="[help.coordinates.lng, help.coordinates.lat]"
           color="blue"
         >
-          <MglPopup>
-            <VCard>
-              {{allHelps}}
-            </VCard>
+          <MglPopup class="ayudas">
+              <v-card
+                class="mx-auto"
+                width="1000"
+              >
+              <v-card-text>
+                <div>
+                  {{help.help_type}}
+                </div>
+                <p class="display-1 text--primary">
+                  {{help.request_title}}
+                </p>
+                <p></p>
+                  {{help.requester.name}}
+                </p>
+                <div class="text--primary">
+                  Dirección:{{help.address}}
+                </div>
+                </br>
+                <div class="text--primary">
+                  {{help.text}}
+                </div>
+                </br>
+                <div class="text--primary">
+                  {{help.telephone}}
+                </div>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn
+                  @click="create(help._id)"
+                  app
+                  class="help"
+                  color="secondary2 white--text"
+                >
+                  I want to help!
+                </v-btn>
+              </v-card-actions>
+            </v-card>
           </MglPopup>
         </MglMarker>
-      </div>
     </MglMap>
   </div>
 </template>
@@ -35,7 +68,6 @@ export default {
       accessToken:
         'pk.eyJ1IjoiYWRyaXJvZHJpbmF2YXMiLCJhIjoiY2s5OHMyZzVjMDRxbTNtbzQ5NzlyaW1rOSJ9.3EtvwOq2t8OtEZXLBDhXYw',
       mapStyle: 'mapbox://styles/adrirodrinavas/ck9u93xyj039s1iqlr12oidvd',
-      coordinates: [],
       allHelps: []
     }
   },
@@ -44,13 +76,21 @@ export default {
     this.mapbox = Mapbox
   },
   methods: {
-    onMapLoad ({ map }) {}
+    onMapLoad ({ map }) {
+    },
+    create (helpId) {
+      APIServices.createHelpRequests(helpId, { message: 'quiero ayudar' })
+        .then(request => {
+          this.$router.push('/requests')
+        })
+        .catch(err => console.log(err))
+    }
   },
   mounted () {
-    APIServices.getHelps(false)
-      .then(res => (
-        this.allHelps = res
-      ))
+    APIServices.getOtherUserHelps().then(res => {
+      this.allHelps = res
+      console.log(res) // CLG AYUDAS
+    })
   }
 }
 </script>
@@ -61,4 +101,12 @@ export default {
   width: 100%;
   height: 100vh;
 }
+#ayudas{
+  width: 1000px;
+}
+
+.help {
+  left: 20px
+}
+
 </style>

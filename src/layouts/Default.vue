@@ -6,7 +6,7 @@
 
     <v-spacer></v-spacer>
 
-    <router-link to="/">
+    <router-link to="/home">
       <h2 class="font">Aidbee</h2>
     </router-link>
 
@@ -50,7 +50,7 @@
             >Help I ask for</v-list-item-title>
           </v-list-item>
 
-          <v-list-item class="mb-0">
+          <v-list-item class="mb-0" to="/requests">
             <v-list-item-icon>
               <v-icon color="secondary2">mdi-handshake</v-icon>
             </v-list-item-icon>

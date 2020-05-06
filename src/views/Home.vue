@@ -22,7 +22,7 @@ export default {
     }
   },
   created () {
-    APIServices.getHelps(true)
+    APIServices.getHelps()
       .then(res => (this.allHelps = res))
   },
   methods: {

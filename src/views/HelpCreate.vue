@@ -1,7 +1,7 @@
 <template>
   <v-container class="justify-center">
     <v-row justify="center">
-      <v-col cols="12" xl="6" lg="6">
+      <v-col cols="12" sm="8" md="6" lg="4">
         <v-col>
           <h2 class="headline-1 secondary--text">Request a delivery</h2>
         </v-col>
@@ -76,32 +76,21 @@
           <v-text-field
             dark
             color="secondary"
-            label="Latitude"
+            label="Coordinates"
             outlined
             required
-            v-model="latitude"
+            v-model="coordinates"
             placeholder
           ></v-text-field>
+        <span class="small white--text" dark>*indicates required field</span>
         </v-col>
-        <v-col>
-          <v-text-field
-            dark
-            color="secondary"
-            label="Longitude"
-            outlined
-            required
-            v-model="longitude"
-            placeholder
-          ></v-text-field>
-        </v-col>
-        <small class="small white--text" dark>*indicates required field</small>
         <br />
         <div class="buttons">
           <v-btn class="cancel" color="secondary secondary2--text" to="/home">Cancel</v-btn>
           <v-btn class="create" color="secondary2 secondary--text" @click="save">Create Help</v-btn>
         </div>
-      </v-col>
-      <v-col cols="12" xl="6" lg="6">
+        </v-col>
+      <v-col cols="12" sm="8" md="6" lg="4">
         <v-col>
           <h2 class="headline-1 secondary--text">Mark where you live</h2>
         </v-col>
@@ -125,14 +114,12 @@ export default {
     text: '',
     telephone: '',
     addInfo: '',
-    latitude: '',
-    longitude: ''
+    coordinates: {}
   }),
   methods: {
     clicked (position) {
-      console.log(position)
-      this.latitude = position.lngLat.lat
-      this.longitude = position.lngLat.lng
+      console.log(position.lngLat)
+      this.coordinates = position.lngLat
     },
     save () {
       const newHelp = {
@@ -142,9 +129,9 @@ export default {
         text: this.text,
         telephone: this.telephone,
         additional_info: this.addInfo,
-        latitude: this.latitude,
-        longitude: this.longitude
+        coordinates: this.coordinates
       }
+      console.log(newHelp)
       APIServices.createHelp(newHelp)
         .then(newHelp => {
           this.$router.push('/home')
