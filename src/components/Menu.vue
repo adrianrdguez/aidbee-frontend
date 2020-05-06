@@ -38,6 +38,6 @@ export default {
 }
 
 .semitransp {
-  background-color: rgba(4,49,112, 1) !important;
+  background-color: rgba(4, 49, 112, 0.8) !important;
 }
 </style>
