@@ -34,16 +34,23 @@ export default {
     return response.data
   },
 
-  async getHelps (query = false) {
+  async getHelps () {
     const options = {
       headers: {
         token: localStorage.getItem('token')
       }
     }
-    if (query) {
-      options.me = true
-    }
     const response = await API.get('/me/helps/', options)
+    return response.data
+  },
+
+  async getOtherUserHelps () {
+    const options = {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    }
+    const response = await API.get('/me/helps/others', options)
     return response.data
   },
 
@@ -70,6 +77,24 @@ export default {
     const response = await API.put(`/me/helps/${helpId}`, {
       ...helpUp
     }, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    return response.data
+  },
+
+  async createHelpRequests (helpId, requests) {
+    const response = await API.post(`/me/requests/${helpId}/requests`, requests, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    return response.data
+  },
+
+  async getAllMyHelpRequests () {
+    const response = await API.get('/me/requests/', {
       headers: {
         token: localStorage.getItem('token')
       }

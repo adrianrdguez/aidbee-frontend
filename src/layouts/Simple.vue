@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar class="transparent">
-      <router-link to="/">
+      <router-link to="/home">
         <h2 class="font">Aidbee</h2>
       </router-link>
       <v-spacer></v-spacer>

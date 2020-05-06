@@ -14,7 +14,7 @@
       <v-icon>mdi-history</v-icon>
     </v-btn>
 
-    <v-btn value="offerHelp" width="30%" color="" to="/mapa">
+    <v-btn value="offerHelp" width="30%" color="" to="/maps">
       <span>Offer Help</span>
       <v-icon>mdi-history</v-icon>
     </v-btn>
