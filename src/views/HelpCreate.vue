@@ -75,21 +75,10 @@
           ></v-text-field>
         </v-col>
         <v-col>
-          <v-text-field
-            dark
-            color="secondary"
-            label="Coordinates"
-            outlined
-            required
-            v-model="coordinates"
-          ></v-text-field>
+          
         <span class="small white--text" dark>*indicates required field</span>
         </v-col>
         <br />
-        <div class="buttons">
-          <v-btn class="cancel" color="secondary secondary2--text" to="/home">Cancel</v-btn>
-          <v-btn class="create" color="secondary2 secondary--text" @click="save">Create Help</v-btn>
-        </div>
         </v-col>
       <v-col cols="12" sm="8" md="6" lg="4">
         <v-col>
@@ -98,6 +87,10 @@
         <v-col>
           <Mapa @clickedEvent="clicked"></Mapa>
         </v-col>
+         <div class="buttons">
+          <v-btn class="cancel" color="secondary secondary2--text" to="/home">Cancel</v-btn>
+          <v-btn class="create" color="secondary2 secondary--text" @click="save">Create Help</v-btn>
+        </div>
       </v-col>
     </v-row>
   </v-container>

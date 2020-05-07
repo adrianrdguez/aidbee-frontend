@@ -1,6 +1,5 @@
 <template>
   <v-app class="color">
-    <!-- <h1 class="white--text display-3">B I E N V E N I D O</h1> -->
     <component :is="layout">
       <router-view></router-view>
     </component>

@@ -9,7 +9,7 @@
             </p>
             <h2 class="secondary2--text">  {{ request.help.help_type }} </h2>
             <div class="texto secondary2--text">
-              {{ request.help.text }}
+              hola
             </div>
             <div class="texto secondary2--text">
               {{ request.help.additional_info }}
@@ -29,8 +29,11 @@
               {{ request.status }}
             </div>
 
-            <v-btn color="secondary secondary2--text" @click="removeHelpRequest(request._id)" class="center">Cancel Request Help</v-btn>
-
+            <div>
+              <v-btn  color="secondary secondary2--text" @click="accept(request._id)" class="center">Accept Request Help</v-btn> <br />
+              <v-btn  color="secondary secondary2--text" @click="refuse(request._id)" class="center">Refuse Request Help</v-btn> <br />
+              <v-btn  color="secondary secondary2--text" @click="done(request._id)" class="center">Mark As Done Request Help</v-btn> <br />
+            </div>
           </v-card-text>
         </v-card>
       </v-col>
@@ -43,12 +46,23 @@ import APIServices from '../services/Api'
 
 export default {
   props: {
-    requests: Array,
-    deleteRequestList: Function
+    requests: Array
   },
   methods: {
-    removeHelpRequest (requestId) {
-      APIServices.removeHelpRequest(requestId)
+    accept (updRequest) {
+      APIServices.acceptAHelpRequest(updRequest)
+        .then(() => {
+          location.reload()
+        })
+    },
+    refuse (updRequest) {
+      APIServices.refuseHelpRequest(updRequest)
+        .then(() => {
+          location.reload()
+        })
+    },
+    done (updRequest) {
+      APIServices.markAHelpRequestAsCompleted(updRequest)
         .then(() => {
           location.reload()
         })

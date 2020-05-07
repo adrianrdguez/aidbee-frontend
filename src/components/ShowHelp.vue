@@ -85,11 +85,6 @@
         <span class="small white--text" dark>*indicates required field</span>
         </v-col>
         <br />
-        <div class="button">
-        <v-btn  color="secondary secondary2--text" to="/home">Cancel</v-btn>
-        <v-btn class="delete" color="secondary secondary2--text" @click="deleteHelpById(help._id)">Delete Help</v-btn>
-        <v-btn class="edit" color="secondary2 white--text" @click="edit">Edit Help</v-btn>
-        </div>
         </v-col>
       <v-col cols="12" sm="8" md="6" lg="4">
         <v-col>
@@ -98,6 +93,11 @@
         <v-col>
           <Mapa @clickedEvent="clicked"></Mapa>
         </v-col>
+        <div class="button">
+        <v-btn  color="secondary secondary2--text" to="/home">Cancel</v-btn>
+        <v-btn class="delete" color="secondary secondary2--text" @click="deleteHelpById(help._id)">Delete Help</v-btn>
+        <v-btn class="edit" color="secondary2 white--text" @click="edit">Edit Help</v-btn>
+        </div>
       </v-col>
     </v-row>
   </v-container>

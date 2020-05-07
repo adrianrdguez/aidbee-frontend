@@ -1,5 +1,6 @@
 <template>
   <v-container class="justify-center">
+    
     <v-row justify="center">
       <v-col cols="12" sm="8" md="6" lg="4">
         <v-col>
@@ -55,7 +56,7 @@
           ></v-text-field>
         </v-col>
         <br />
-        <span class="update-text">
+        <span class="update-text subtitle-2">
           *If you want to update any information, you will need login in again
         </span>
         <div class="button">
@@ -151,6 +152,7 @@ export default {
   mounted () {
     APIServices.getMyProfile(this.$route.params.id)
       .then(user => {
+        console.log(user)
         this.name = user.name
         this.backupName = user.name
         this.surname = user.surname
@@ -195,6 +197,10 @@ margin-left: 20px;
 .update-text{
   text-align: center;
   justify-content: center;
+  align-content: center;
   color: white;
+}
+.headline-1 {
+  margin-top: 20px;
 }
 </style>

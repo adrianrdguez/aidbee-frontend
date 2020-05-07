@@ -1,5 +1,8 @@
 <template v-slot:activator="{ on }">
   <div class="home">
+    <div>
+      <p class=" letras subtitle-1 font-weight-bold secondary2--text">Helps I offer</p>
+    </div>
     <RequestList :requests="allRequests"/>
   </div>
 </template>

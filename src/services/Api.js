@@ -105,12 +105,11 @@ export default {
   async seeAllHelpRequestForAHelp () {
     const options = {
       headers: {
-        token: localStorage.getItem('token'),
-        'If-None-Match': '*'
+        token: localStorage.getItem('token')
       }
     }
     const response = await API.get('/me/helps/helpId/requests', options)
-    return console.log(response.data)
+    return response.data
   },
 
   async getAllMyHelpRequests () {
@@ -135,6 +134,39 @@ export default {
 
   async updateMyProfile (updProfile) {
     const response = await API.put('/me', updProfile, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    return response.data
+  },
+
+  async acceptAHelpRequest (requestId, updRequest) {
+    const response = await API.put(`/me/helps/helpId/requests/${requestId}/accept`, {
+      ...updRequest
+    }, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    return response.data
+  },
+
+  async refuseHelpRequest (requestId, updRequest) {
+    const response = await API.put(`/me/helps/helpId/requests/${requestId}/refuse`, {
+      ...updRequest
+    }, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
+    return response.data
+  },
+
+  async markAHelpRequestAsCompleted (requestId, updRequest) {
+    const response = await API.put(`/me/helps/helpId/requests/${requestId}/done`, {
+      ...updRequest
+    }, {
       headers: {
         token: localStorage.getItem('token')
       }

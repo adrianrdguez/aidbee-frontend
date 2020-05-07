@@ -1,11 +1,12 @@
 <template>
   <div id="map">
-    <div>
-      <p class=" letras subtitle-1 font-weight-bold secondary2--text">Help other people</p>
+    <div fixed>
+      <p class=" letras subtitle-1 font-weight-bold secondary2--text" fixed>Help other people</p>
     </div>
       <MglMap :accessToken="accessToken" :mapStyle="mapStyle" >
-        <div v-for="(help, idx) in allHelps" :key="idx" >
         <MglMarker
+          v-for="(help, idx) in allHelps"
+          :key="idx"
           :coordinates="[help.lng, help.lat]"
           color="blue"
         >
@@ -50,7 +51,6 @@
             </v-card>
           </MglPopup>
         </MglMarker>
-      </div>
     </MglMap>
   </div>
 </template>
