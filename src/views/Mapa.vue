@@ -1,7 +1,7 @@
 <template>
   <div id="map">
     <div>
-      <p class=" letras subtitle-1 font-weight-bold secondary2--text">Wanna Help?</p>
+      <p class=" letras subtitle-1 font-weight-bold secondary2--text">Help other people</p>
     </div>
     <MglMap :accessToken="accessToken" :mapStyle="mapStyle" @load="onMapLoad">
         <MglMarker

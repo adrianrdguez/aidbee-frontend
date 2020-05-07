@@ -48,16 +48,6 @@
             v-model="telephone"
           ></v-text-field>
         </v-col>
-        <v-col>
-          <v-text-field
-            dark
-            color="secondary"
-            label="Your Password"
-            outlined
-            required
-            v-model="password"
-          ></v-text-field>
-        </v-col>
         <br />
         <div class="button">
           <v-btn  color="secondary secondary2--text" to="/home">Cancel</v-btn>
@@ -78,8 +68,7 @@ export default {
       name: '',
       surname: '',
       email: '',
-      telephone: '',
-      password: ''
+      telephone: ''
     }
   },
   methods: {
@@ -89,7 +78,6 @@ export default {
         surname: this.surname,
         email: this.email,
         telephone: this.telephone,
-        password: this.addInfo
       }
       APIServices.updateMyProfile(this.$route.params.id, upProfile)
         .then(() => {
@@ -105,7 +93,6 @@ export default {
         this.surname = user.surname
         this.email = user.email
         this.telephone = user.telephone
-        this.password = user.password
       })
   }
 }

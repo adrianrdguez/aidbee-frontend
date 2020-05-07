@@ -47,7 +47,7 @@
             <v-list-item-title
               style="height:50px"
               class="d-flex align-center text body-1"
-            >Help I ask for</v-list-item-title>
+            >My help requests for my helps</v-list-item-title>
           </v-list-item>
 
           <v-list-item class="mb-0" to="/requests">
@@ -57,7 +57,7 @@
             <v-list-item-title
               style="height:50px"
               class="d-flex align-center text body-1"
-            >Help I offer</v-list-item-title>
+            >My help requests for other helps</v-list-item-title>
           </v-list-item>
         </v-list-item-group>
       </v-list>
