@@ -1,6 +1,6 @@
 <template v-slot:activator="{ on }">
   <div class="home">
-    <RequestList :requests="allRequests"/>
+    <RequestList v-if="allRequests.length > 0" :requests="allRequests"/>
   </div>
 </template>
 
@@ -21,7 +21,10 @@ export default {
   },
   created () {
     APIServices.getAllMyHelpRequests()
-      .then(res => (this.allRequests = res))
+      .then(res => {
+        console.log(res)
+        this.allRequests = res
+      })
   }
 }
 </script>

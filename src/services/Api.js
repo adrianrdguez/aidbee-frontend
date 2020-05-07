@@ -105,7 +105,8 @@ export default {
   async seeAllHelpRequestForAHelp () {
     const options = {
       headers: {
-        token: localStorage.getItem('token')
+        token: localStorage.getItem('token'),
+        'If-None-Match': '*'
       }
     }
     const response = await API.get('/me/helps/helpId/requests', options)
@@ -119,6 +120,27 @@ export default {
       }
     }
     const response = await API.get('/me/helps/helpId/requests', options)
+    return response.data
+  },
+
+  async getMyProfile () {
+    const options = {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    }
+    const response = await API.get('/me/', options)
+    return response.data
+  },
+
+  async updateMyProfile (userId, updProfile) {
+    const response = await API.put(`/me/${userId}`, {
+      ...updProfile
+    }, {
+      headers: {
+        token: localStorage.getItem('token')
+      }
+    })
     return response.data
   }
 }

@@ -1,5 +1,8 @@
 <template>
   <div id="map">
+    <div>
+      <p class=" letras subtitle-1 font-weight-bold secondary2--text">Wanna Help?</p>
+    </div>
     <MglMap :accessToken="accessToken" :mapStyle="mapStyle" @load="onMapLoad">
         <MglMarker
           v-for="(help, idx) in allHelps"
@@ -17,21 +20,21 @@
                 <div>
                   Type of help: {{help.help_type}}
                 </div>
-                </br>
+                <br />
                 <p class="display-1 text--primary">
                   Help: {{help.request_title}}
                 </p>
-                <p></p>
+                <p>
                   User name: {{help.requester.name}}
                 </p>
                 <div class="text--primary">
                   Address :{{help.address}}
                 </div>
-                </br>
+                <br />
                 <div class="text--primary">
                  Information: {{help.text}}
                 </div>
-                </br>
+                <br />
                 <div class="text--primary">
                  Telephone number: {{help.telephone}}
                 </div>
@@ -108,6 +111,13 @@ export default {
 
 .help {
   left: 20px
+}
+
+.letras {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  background-color: #EDC1BB
 }
 
 </style>

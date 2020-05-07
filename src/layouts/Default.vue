@@ -63,7 +63,7 @@
       </v-list>
       <template v-slot:append>
         <v-divider></v-divider>
-        <v-list-item class="mb-0">
+        <v-list-item class="mb-0" to="/myprofile">
           <v-list-item-icon>
             <v-icon color="secondary2">mdi-account-circle</v-icon>
           </v-list-item-icon>
@@ -128,7 +128,7 @@ export default {
 }
 
 .semitransp {
-  background-color: rgba(4, 49, 112, 0.8) !important;
+  background-color: rgba(4, 49, 112, 0.9) !important;
 }
 
 .d-flex {

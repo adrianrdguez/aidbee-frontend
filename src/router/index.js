@@ -9,7 +9,8 @@ import HelpShow from '../views/HelpShow.vue'
 import HelpCreate from '../views/HelpCreate.vue'
 import Mapa from '../views/Mapa.vue'
 import Requests from '../views/Requests.vue'
-import Requester from '../views/Requester.vue';
+import Requester from '../views/Requester.vue'
+import Profile from '../views/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -103,6 +104,20 @@ const routes = [
     name: 'Requester',
     meta: { layout: 'default' },
     component: Requester,
+    beforeEnter (to, from, next) {
+      if (!localStorage.getItem('token')) {
+        next({
+          name: 'Signup'
+        })
+      }
+      next()
+    }
+  },
+  {
+    path: '/myprofile',
+    name: 'Profile',
+    meta: { layout: 'default' },
+    component: Profile,
     beforeEnter (to, from, next) {
       if (!localStorage.getItem('token')) {
         next({

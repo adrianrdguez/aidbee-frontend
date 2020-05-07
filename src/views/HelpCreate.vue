@@ -58,7 +58,9 @@
             outlined
             required
             v-model="telephone"
+            :rules="telephoneRules"
             placeholder="ie. 639874512"
+
           ></v-text-field>
         </v-col>
         <v-col>
@@ -80,7 +82,6 @@
             outlined
             required
             v-model="coordinates"
-            placeholder
           ></v-text-field>
         <span class="small white--text" dark>*indicates required field</span>
         </v-col>
@@ -113,12 +114,16 @@ export default {
     address: '',
     text: '',
     telephone: '',
+    telephoneRules: [
+      v => !!v || 'Telephone is required',
+      v => /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/.test(v) || 'Telephone must be valid',
+      v => v.length >= 9 || 'Telephone must be at least 9 characters'
+    ],
     addInfo: '',
     coordinates: {}
   }),
   methods: {
     clicked (position) {
-      console.log(position.lngLat)
       this.coordinates = position.lngLat
     },
     save () {
@@ -131,7 +136,6 @@ export default {
         additional_info: this.addInfo,
         coordinates: this.coordinates
       }
-      console.log(newHelp)
       APIServices.createHelp(newHelp)
         .then(newHelp => {
           this.$router.push('/home')

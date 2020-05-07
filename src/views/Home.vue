@@ -1,11 +1,12 @@
 <template v-slot:activator="{ on }">
   <div class="home">
-    <div class="button">
-    <v-btn large color="secondary" class="secondary2--text"  to="helps/new" >Create  Help</v-btn>
-    </div>
     <div>
-    <h1 class="secondary--text">Your Helps</h1>
+      <p class=" letras subtitle-1 font-weight-bold secondary2--text">Your helps</p>
     </div>
+    <div class="button">
+      <v-btn large color="secondary" class="secondary2--text"  to="helps/new" >Create  Help</v-btn>
+    </div>
+      <br/>
     <HelpList :helps="allHelps" @deleteHelpList="deleteHelpHome"/>
   </div>
 </template>
@@ -44,6 +45,13 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+}
+
+.letras {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  background-color: #EDC1BB
 }
 
 </style>
