@@ -3,12 +3,10 @@
     <div>
       <p class=" letras subtitle-1 font-weight-bold secondary2--text">Help other people</p>
     </div>
-    <MglMap :accessToken="accessToken" :mapStyle="mapStyle" @load="onMapLoad">
+      <MglMap :accessToken="accessToken" :mapStyle="mapStyle" >
+        <div v-for="(help, idx) in allHelps" :key="idx" >
         <MglMarker
-          v-for="(help, idx) in allHelps"
-          :key="idx"
-          debugger
-          :coordinates="[help.coordinates.lng, help.coordinates.lat]"
+          :coordinates="[help.lng, help.lat]"
           color="blue"
         >
           <MglPopup class="ayudas">
@@ -52,6 +50,7 @@
             </v-card>
           </MglPopup>
         </MglMarker>
+      </div>
     </MglMap>
   </div>
 </template>
@@ -80,8 +79,6 @@ export default {
     this.mapbox = Mapbox
   },
   methods: {
-    onMapLoad ({ map }) {
-    },
     create (helpId) {
       APIServices.createHelpRequests(helpId, { message: 'quiero ayudar' })
         .then(request => {
@@ -92,9 +89,10 @@ export default {
   },
   mounted () {
     APIServices.getOtherUserHelps().then(res => {
-      this.allHelps = res
-      console.log(res) // CLG AYUDAS
+      this.allHelps = res 
     })
+  },
+  computed: {
   }
 }
 </script>

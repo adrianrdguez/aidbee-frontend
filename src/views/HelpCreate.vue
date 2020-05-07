@@ -134,8 +134,10 @@ export default {
         text: this.text,
         telephone: this.telephone,
         additional_info: this.addInfo,
-        coordinates: this.coordinates
+        lng: this.coordinates.lng,
+        lat: this.coordinates.lat
       }
+      console.log(newHelp)
       APIServices.createHelp(newHelp)
         .then(newHelp => {
           this.$router.push('/home')
