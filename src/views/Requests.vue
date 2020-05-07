@@ -1,6 +1,6 @@
 <template v-slot:activator="{ on }">
   <div class="home">
-    <RequestList v-if="allRequests.length > 0" :requests="allRequests"/>
+    <RequestList :requests="allRequests"/>
   </div>
 </template>
 

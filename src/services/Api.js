@@ -119,7 +119,7 @@ export default {
         token: localStorage.getItem('token')
       }
     }
-    const response = await API.get('/me/helps/helpId/requests', options)
+    const response = await API.get('/me/requests/', options)
     return response.data
   },
 
