@@ -96,7 +96,7 @@
           <h2 class="headline-1 secondary--text">Mark where you live</h2>
         </v-col>
         <v-col>
-          <Mapa @clickedEvent="clicked"></Mapa>
+            <!-- <Mapa @clickedEvent="clicked"></Mapa>-->
         </v-col>
       </v-col>
     </v-row>
@@ -106,12 +106,8 @@
 <script>
 
 import APIServices from '../services/Api'
-import Mapa from '../components/Mapa'
 
 export default {
-  components: {
-    Mapa
-  },
   props: {
     help: Object,
     helpIdx: Number,
