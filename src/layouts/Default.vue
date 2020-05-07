@@ -1,20 +1,21 @@
 <template>
   <div>
-
     <v-app-bar flat dense app class="semitransp overflow-hidden">
-    <v-app-bar-nav-icon @click="drawer = !drawer" color="secondary"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer" color="secondary"></v-app-bar-nav-icon>
 
-    <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
 
-    <router-link to="/home">
-      <h2 class="font">Aidbee</h2>
-    </router-link>
+      <router-link to="/home">
+        <h2 class="font">Aidbee</h2>
+      </router-link>
 
-    <v-spacer></v-spacer>
-      <v-avatar color="secondary" size="30">
-        <span class="white--text">{{name[0].toUpperCase()}}</span>
+      <v-spacer></v-spacer>
+      <v-avatar v-if="img.length != 0" size="30">
+        <v-img :src="img"></v-img>
       </v-avatar>
-
+      <v-avatar v-else color="secondary" size="30">
+        <span class="white--text">{{ name[0].toUpperCase() }}</span>
+      </v-avatar>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" fixed xs temporary :width="windowWidth" color="terciary">
@@ -28,12 +29,15 @@
 
           <v-layout mt-4 column align-center>
             <v-flex>
-              <v-avatar>
-                <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+              <v-avatar v-if="img.length != 0" size="50">
+                <v-img :src="img"></v-img>
+              </v-avatar>
+              <v-avatar v-else color="secondary" size="50">
+                <span class="white--text">{{ name[0].toUpperCase() }}</span>
               </v-avatar>
             </v-flex>
             <v-flex>
-              <p class="secondary2--text mt-3 headline">{{name}}</p>
+              <p class="secondary2--text mt-3 headline">{{ name }}</p>
               <!-- toUpperCase()  not working-->
             </v-flex>
           </v-layout>
@@ -92,6 +96,7 @@ export default {
   name: 'Default',
   data: () => ({
     name: localStorage.getItem('name'),
+    img: localStorage.getItem('img'),
     drawer: false,
     windowWidth: ''
   }),

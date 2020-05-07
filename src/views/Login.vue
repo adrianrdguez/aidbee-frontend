@@ -85,6 +85,7 @@ export default {
           } else {
             localStorage.setItem('token', response.token)
             localStorage.setItem('name', response.name)
+            localStorage.setItem('img', response.img || '')
             this.$router.push('/home')
           }
         })

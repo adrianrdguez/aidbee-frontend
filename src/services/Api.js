@@ -133,10 +133,8 @@ export default {
     return response.data
   },
 
-  async updateMyProfile (userId, updProfile) {
-    const response = await API.put(`/me/${userId}`, {
-      ...updProfile
-    }, {
+  async updateMyProfile (updProfile) {
+    const response = await API.put('/me', updProfile, {
       headers: {
         token: localStorage.getItem('token')
       }
