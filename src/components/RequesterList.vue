@@ -1,17 +1,21 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12" sm="6" md="4" v-for="(request,idx) in requests" :key="idx">
-        <v-card class="mx-auto" color="terciary">
+  <v-container class="justify-center">
+    <v-row justify="center">
+      <v-col cols="12" sm="8" md="6" lg="4" v-for="(request,idx) in requests" :key="idx">
+        <v-card class="mx-auto" height="auto" color="terciary">
           <v-card-text>
             <p class="display-1 secondary2--text">
               {{ request.help.request_title }}
             </p>
+             <h2 class=" texto secondary2--text">
+              {{ request.status }}
+            </h2>
+            <br/>
             <h2 class="secondary2--text">  {{ request.help.help_type }} </h2>
             <div class="texto secondary2--text">
-              hola
+              {{request.help.text}}
             </div>
-            <div class="texto secondary2--text">
+            <div class=" subtitle-1 texto secondary2--text">
               {{ request.help.additional_info }}
             </div>
             <v-divider></v-divider>
@@ -25,14 +29,15 @@
               {{ request.help.telephone }}
             </div>
 
-            <div class="texto secondary2--text">
-              {{ request.status }}
-            </div>
-
             <div>
-              <v-btn  color="secondary secondary2--text" @click="accept(request._id)" class="center">Accept Request Help</v-btn> <br />
-              <v-btn  color="secondary secondary2--text" @click="refuse(request._id)" class="center">Refuse Request Help</v-btn> <br />
-              <v-btn  color="secondary secondary2--text" @click="done(request._id)" class="center">Mark As Done Request Help</v-btn> <br />
+              <v-row>
+                <v-col cols="12" sm="8" md="6" lg="8">
+                  <v-btn  color="secondary secondary2--text" @click="accept(request._id)" class="center">Accept Request</v-btn>
+                  <v-btn  color="secondary secondary2--text" @click="refuse(request._id)" class="center">Refuse Request</v-btn>
+                  <v-btn  color="secondary secondary2--text" @click="done(request._id)" class="center">Mark Request As Done</v-btn>
+
+                </v-col>
+              </v-row>
             </div>
           </v-card-text>
         </v-card>
@@ -76,4 +81,5 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
+
 </style>
