@@ -1,51 +1,38 @@
 <template>
   <div id="map">
     <div fixed>
-      <p class=" letras subtitle-1 font-weight-bold secondary2--text" fixed>Help other people</p>
+      <p class="letras subtitle-1 font-weight-bold secondary2--text" fixed>Help other people</p>
     </div>
-      <MglMap :accessToken="accessToken" :mapStyle="mapStyle">
-        <MglMarker
-          v-for="(help, idx) in allHelps"
-          :key="idx"
-          :coordinates="[help.lng, help.lat]"
-          color="blue"
-        >
-          <MglPopup class="ayudas">
-              <v-card
-                class="mx-auto"
-                width="1000"
-              >
-              <v-card-text>
-                <div>
-                  Type Of Help: {{help.help_type}}
-                </div>
-                <br />
-                <h2 class="text--primary">
-                  Help: {{help.request_title}}
-                </h2>
-                <br/>
-                <p>
-                  User Name: {{help.requester.name}}
-                </p>
-                <br />
-                <div class="text--primary">
-                 Information: {{help.text}}
-                </div>
-                <br />
-              </v-card-text>
-              <v-card-actions>
-                <v-btn
-                  @click="create(help._id)"
-                  app
-                  class="help"
-                  color="secondary2 white--text"
-                >
-                  I want to help!
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </MglPopup>
-        </MglMarker>
+    <MglMap :accessToken="accessToken" :mapStyle="mapStyle">
+      <MglMarker
+        v-for="(help, idx) in allHelps"
+        :key="idx"
+        :coordinates="[help.lng, help.lat]"
+        color="blue"
+      >
+        <MglPopup class="ayudas">
+          <v-card class="mx-auto" width="1000">
+            <v-card-text>
+              <div>Type Of Help: {{help.help_type}}</div>
+              <br />
+              <h2 class="text--primary">Help: {{help.request_title}}</h2>
+              <br />
+              <p>User Name: {{help.requester.name}}</p>
+              <br />
+              <div class="text--primary">Information: {{help.text}}</div>
+              <br />
+            </v-card-text>
+            <v-card-actions>
+              <v-btn
+                @click="create(help._id)"
+                app
+                class="help"
+                color="secondary2 white--text"
+              >I want to help!</v-btn>
+            </v-card-actions>
+          </v-card>
+        </MglPopup>
+      </MglMarker>
     </MglMap>
   </div>
 </template>
@@ -80,9 +67,7 @@ export default {
       const upHelp = {
         requestStatus: this.request_status
       }
-      APIServices.updateHelpById(helpId, upHelp)
-        .then(() => {
-        })
+      APIServices.updateHelpById(helpId, upHelp).then(() => {})
       APIServices.createHelpRequests(helpId, { message: 'quiero ayudar' })
         .then(request => {
           this.$router.push('/requests')
@@ -97,7 +82,10 @@ export default {
   },
   computed: {
     requestStatus () {
-      if (this.help.requestStatus !== '' || this.help.requestStatus !== 'requested') {
+      if (
+        this.help.requestStatus !== '' ||
+        this.help.requestStatus !== 'requested'
+      ) {
         return this.marker.remove()
       }
       return console.log('hola')
@@ -112,19 +100,18 @@ export default {
   width: 100%;
   height: 100vh;
 }
-#ayudas{
+#ayudas {
   width: 1000px;
 }
 
 .help {
-  left: 20px
+  left: 20px;
 }
 
 .letras {
   display: flex;
   justify-content: center;
   margin-top: 5px;
-  background-color: #EDC1BB
+  background-color: #edc1bb;
 }
-
 </style>

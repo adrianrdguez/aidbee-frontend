@@ -6,7 +6,7 @@
           <v-card-text>
             <p class="display-1 secondary2--text">
               {{ request.help.request_title }}
-              <v-btn rounded small v-bind:class="[{ brown: request.status == 'requested' }, { red: request.status == 'rejected' }, { green: request.status == 'accepted' }]">{{request.status}}</v-btn>
+              <v-btn rounded small v-bind:class="[{ brown: request.status == 'requested' }, { red: request.status == 'rejected' }, { green: request.status == 'accepted' },{ blue: request.status == 'done' }]">{{request.status}}</v-btn>
             </p>
             <br/>
             <h2 class="secondary2--text">  Type Of Help: {{ request.help.help_type }} </h2>
