@@ -114,7 +114,7 @@ export default {
     ],
     addInfo: '',
     coordinates: {},
-    request_status: ''
+    request_status: 'requested'
   }),
   methods: {
     clicked (position) {
