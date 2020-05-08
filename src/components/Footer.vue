@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-footer padless>
+    <v-footer padless class="">
     <v-col
       class="text-center"
       cols="12"
@@ -12,9 +12,9 @@
 </template>
 
 <script>
-  export default {
-    
-  }
+export default {
+
+}
 </script>
 
 <style lang="scss" scoped>

@@ -7,6 +7,10 @@
             <p class="display-1 secondary2--text">
               {{ request.help.request_title }}
             </p>
+            <h2 class="texto secondary2--text">
+              {{ request.status }}
+            </h2>
+            <br/>
             <h2 class="secondary2--text">  {{ request.help.help_type }} </h2>
             <div class="texto secondary2--text">
               {{ request.help.text }}
@@ -25,11 +29,7 @@
               {{ request.help.telephone }}
             </div>
 
-            <div class="texto secondary2--text">
-              {{ request.status }}
-            </div>
-
-            <v-btn color="secondary secondary2--text" @click="removeHelpRequest(request._id)" class="center">Cancel Request Help</v-btn>
+            <v-btn color=" button secondary secondary2--text" @click="removeHelpRequest(request._id)" class="center">Cancel Request Help</v-btn>
 
           </v-card-text>
         </v-card>
@@ -62,4 +62,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
+
+.button {
+    left: 20%
+  }
 </style>

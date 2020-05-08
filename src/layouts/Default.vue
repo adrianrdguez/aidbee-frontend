@@ -139,4 +139,5 @@ export default {
 .d-flex {
   color: #043170;
 }
+
 </style>
