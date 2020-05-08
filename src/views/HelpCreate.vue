@@ -75,7 +75,7 @@
           ></v-text-field>
         </v-col>
         <v-col>
-          
+
         <span class="small white--text" dark>*indicates required field</span>
         </v-col>
         <br />
@@ -113,7 +113,8 @@ export default {
       v => v.length >= 9 || 'Telephone must be at least 9 characters'
     ],
     addInfo: '',
-    coordinates: {}
+    coordinates: {},
+    request_status: ''
   }),
   methods: {
     clicked (position) {
@@ -128,7 +129,8 @@ export default {
         telephone: this.telephone,
         additional_info: this.addInfo,
         lng: this.coordinates.lng,
-        lat: this.coordinates.lat
+        lat: this.coordinates.lat,
+        requestStatus: this.request_status
       }
       console.log(newHelp)
       APIServices.createHelp(newHelp)

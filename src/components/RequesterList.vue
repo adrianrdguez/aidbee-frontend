@@ -16,7 +16,7 @@
             </div>
             <v-divider></v-divider>
             <div class="texto secondary2--text">
-              {{ request.help.requester }}
+              <pre> {{ request.help.requester.name }} </pre>
             </div>
             <div class="texto secondary2--text">
               {{ request.help.address }}
@@ -30,9 +30,9 @@
             </div>
 
             <div>
-              <v-btn  color="secondary secondary2--text" @click="accept(request._id)" class="center">Accept Request Help</v-btn> <br />
-              <v-btn  color="secondary secondary2--text" @click="refuse(request._id)" class="center">Refuse Request Help</v-btn> <br />
-              <v-btn  color="secondary secondary2--text" @click="done(request._id)" class="center">Mark As Done Request Help</v-btn> <br />
+              <v-btn  color="secondary secondary2--text" @click="accept(request._id, request.help._id)" class="center">Accept Request Help</v-btn> <br />
+              <v-btn  color="secondary secondary2--text" @click="refuse(request._id, request.help._id)" class="center">Refuse Request Help</v-btn> <br />
+              <v-btn  color="secondary secondary2--text" @click="done(request._id, request.help._id)" class="center">Mark As Done Request Help</v-btn> <br />
             </div>
           </v-card-text>
         </v-card>
@@ -45,23 +45,48 @@
 import APIServices from '../services/Api'
 
 export default {
+  data () {
+    return {
+      request_status_accept: 'accepted',
+      request_status_refuse: 'refuse',
+      request_status_done: 'done'
+    }
+  },
   props: {
     requests: Array
   },
   methods: {
-    accept (updRequest) {
+    accept (updRequest, helpId) {
+      const upHelp = {
+        requestStatus: this.request_status_accept
+      }
+      APIServices.updateHelpById(helpId, upHelp)
+        .then(() => {
+        })
       APIServices.acceptAHelpRequest(updRequest)
         .then(() => {
           location.reload()
         })
     },
-    refuse (updRequest) {
+    refuse (updRequest, helpId) {
+      const upHelp = {
+        requestStatus: this.request_status_refuse
+      }
+      APIServices.updateHelpById(helpId, upHelp)
+        .then(() => {
+        })
       APIServices.refuseHelpRequest(updRequest)
         .then(() => {
           location.reload()
         })
     },
-    done (updRequest) {
+    done (updRequest, helpId) {
+      const upHelp = {
+        requestStatus: this.request_status_done
+      }
+      APIServices.updateHelpById(helpId, upHelp)
+        .then(() => {
+        })
       APIServices.markAHelpRequestAsCompleted(updRequest)
         .then(() => {
           location.reload()

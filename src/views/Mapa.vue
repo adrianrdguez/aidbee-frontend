@@ -3,7 +3,7 @@
     <div fixed>
       <p class=" letras subtitle-1 font-weight-bold secondary2--text" fixed>Help other people</p>
     </div>
-      <MglMap :accessToken="accessToken" :mapStyle="mapStyle" >
+      <MglMap :accessToken="accessToken" :mapStyle="mapStyle">
         <MglMarker
           v-for="(help, idx) in allHelps"
           :key="idx"
@@ -71,7 +71,9 @@ export default {
       accessToken:
         'pk.eyJ1IjoiYWRyaXJvZHJpbmF2YXMiLCJhIjoiY2s5OHMyZzVjMDRxbTNtbzQ5NzlyaW1rOSJ9.3EtvwOq2t8OtEZXLBDhXYw',
       mapStyle: 'mapbox://styles/adrirodrinavas/ck9u93xyj039s1iqlr12oidvd',
-      allHelps: []
+      allHelps: [],
+      request_status: 'requested',
+      marker: this.MglMarker
     }
   },
 
@@ -79,7 +81,13 @@ export default {
     this.mapbox = Mapbox
   },
   methods: {
-    create (helpId) {
+    create (helpId, updHelp) {
+      const upHelp = {
+        requestStatus: this.request_status
+      }
+      APIServices.updateHelpById(helpId, upHelp)
+        .then(() => {
+        })
       APIServices.createHelpRequests(helpId, { message: 'quiero ayudar' })
         .then(request => {
           this.$router.push('/requests')
@@ -89,10 +97,16 @@ export default {
   },
   mounted () {
     APIServices.getOtherUserHelps().then(res => {
-      this.allHelps = res 
+      this.allHelps = res
     })
   },
   computed: {
+    requestStatus () {
+      if (this.help.requestStatus !== '' || this.help.requestStatus !== 'requested') {
+        return this.marker.remove()
+      }
+      return console.log('hola')
+    }
   }
 }
 </script>

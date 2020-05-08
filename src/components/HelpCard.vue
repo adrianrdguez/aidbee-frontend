@@ -11,10 +11,9 @@
       <div class="texto secondary2--text">
         {{ help.text }}
       </div> <br/>
-      <v-btn class="secondary2--text" >
+      <v-btn class="secondary2 secondary--text button" >
         See Help
       </v-btn>
-
 
     </v-card-text>
   </v-card>
@@ -33,5 +32,8 @@ export default {
 <style lang="scss">
   .texto{
     margin-top: 20px;
+  }
+  .button{
+    left: 33%
   }
 </style>
