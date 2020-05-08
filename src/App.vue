@@ -18,10 +18,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.color {
+.color{
   background: linear-gradient(180deg, #043170 0%, #EDC1BB 100%) !important;
 }
-
 .white--text {
   display: flex;
   align-items: center;

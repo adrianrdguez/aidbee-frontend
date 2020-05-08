@@ -137,11 +137,6 @@ export default {
   text-align: center;
 }
 
-.color{
-  background: linear-gradient(180deg, #043170 0%, #EDC1BB 100%);
-  height: 100vh;
-}
-
 .button {
   bottom: 20px;
 }
