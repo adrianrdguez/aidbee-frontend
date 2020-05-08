@@ -26,17 +26,11 @@
                 <p>
                   User name: {{help.requester.name}}
                 </p>
-                <div class="text--primary">
-                  Address :{{help.address}}
-                </div>
                 <br />
                 <div class="text--primary">
                  Information: {{help.text}}
                 </div>
                 <br />
-                <div class="text--primary">
-                 Telephone number: {{help.telephone}}
-                </div>
               </v-card-text>
               <v-card-actions>
                 <v-btn

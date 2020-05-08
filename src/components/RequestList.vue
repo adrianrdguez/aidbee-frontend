@@ -6,10 +6,8 @@
           <v-card-text>
             <p class="display-1 secondary2--text">
               {{ request.help.request_title }}
+              <v-btn rounded small v-bind:class="[{ brown: request.status == 'requested' }, { red: request.status == 'rejected' }, { green: request.status == 'accepted' }]">{{request.status}}</v-btn>
             </p>
-            <h2 class="texto secondary2--text">
-              {{ request.status }}
-            </h2>
             <br/>
             <h2 class="secondary2--text">  {{ request.help.help_type }} </h2>
             <div class="texto secondary2--text">
@@ -53,6 +51,8 @@ export default {
           location.reload()
         })
     }
+  },
+  computed: {
   }
 }
 </script>
