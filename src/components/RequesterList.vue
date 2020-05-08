@@ -9,28 +9,25 @@
               <v-btn rounded small v-bind:class="[{ brown: request.status == 'requested' }, { red: request.status == 'rejected' }, { green: request.status == 'accepted' }]">{{request.status}}</v-btn>
             </p>
             <br/>
-            <h2 class="secondary2--text">  {{ request.help.help_type }} </h2>
+            <h2 class="secondary2--text">  Type Of Help: {{ request.help.help_type }} </h2>
             <div class="texto secondary2--text">
-              {{request.help.text}}
+              My Help Request: {{request.help.text}}
             </div>
             <div class=" subtitle-1 texto secondary2--text">
-              {{ request.help.additional_info }}
+              My Additional Info: {{ request.help.additional_info }}
             </div>
             <v-divider></v-divider>
             <div class="texto secondary2--text">
-              <pre> {{ request.help.requester.name }} </pre>
+              Helper Name: {{ request.helper.name }} {{ request.helper.surname }}
             </div>
             <div class="texto secondary2--text">
-              {{ request.help.address }}
-            </div>
-            <div class="texto secondary2--text">
-              {{ request.help.telephone }}
+              Helper Phone: {{ request.helper.telephone }}
             </div>
 
             <div>
-              <v-btn  color="secondary secondary2--text" @click="accept(request._id, request.help._id)" class="center">Accept Request Help</v-btn> <br />
-              <v-btn  color="secondary secondary2--text" @click="refuse(request._id, request.help._id)" class="center">Refuse Request Help</v-btn> <br />
-              <v-btn  color="secondary secondary2--text" @click="done(request._id, request.help._id)" class="center">Mark As Done Request Help</v-btn> <br />
+              <v-btn  color="secondary secondary2--text" @click="refuse(request._id, request.help._id)" class="center">Refuse </v-btn>
+              <v-btn  color="accept secondary secondary2--text" @click="accept(request._id, request.help._id)" class="center">Accept </v-btn>
+              <v-btn  color="done secondary secondary2--text" @click="done(request._id, request.help._id)" class="center">Done</v-btn>
             </div>
           </v-card-text>
         </v-card>
@@ -40,6 +37,7 @@
 </template>
 
 <script>
+
 import APIServices from '../services/Api'
 
 export default {
@@ -98,6 +96,9 @@ export default {
 #list {
   display: flex;
   flex-wrap: wrap;
+}
+.done, .accept{
+  margin-left: 5px;
 }
 
 </style>

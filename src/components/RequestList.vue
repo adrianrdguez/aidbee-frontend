@@ -5,26 +5,26 @@
         <v-card class="mx-auto" color="terciary">
           <v-card-text>
             <p class="display-1 secondary2--text">
-              {{ request.help.request_title }}
+               {{ request.help.request_title }}
               <v-btn rounded small v-bind:class="[{ brown: request.status == 'requested' }, { red: request.status == 'rejected' }, { green: request.status == 'accepted' }]">{{request.status}}</v-btn>
             </p>
             <br/>
-            <h2 class="secondary2--text">  {{ request.help.help_type }} </h2>
+            <h2 class="secondary2--text">  Type Of Help: {{ request.help.help_type }} </h2>
             <div class="texto secondary2--text">
               {{ request.help.text }}
             </div>
             <div class="texto secondary2--text">
-              {{ request.help.additional_info }}
+              Additional Info: {{ request.help.additional_info }}
             </div>
             <v-divider></v-divider>
             <div class="texto secondary2--text">
-              {{ request.help.requester.name }}
+              Requester Name: {{ request.help.requester.name }}
             </div>
             <div class="texto secondary2--text">
-              {{ request.help.address }}
+              Requester Address: {{ request.help.address }}
             </div>
             <div class="texto secondary2--text">
-              {{ request.help.telephone }}
+              Requester Phone: {{ request.help.telephone }}
             </div>
 
             <v-btn color=" button secondary secondary2--text" @click="removeHelpRequest(request._id)" class="center">Cancel Request Help</v-btn>

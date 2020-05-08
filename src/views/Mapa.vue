@@ -17,14 +17,15 @@
               >
               <v-card-text>
                 <div>
-                  Type of help: {{help.help_type}}
+                  Type Of Help: {{help.help_type}}
                 </div>
                 <br />
-                <p class="display-1 text--primary">
+                <h2 class="text--primary">
                   Help: {{help.request_title}}
-                </p>
+                </h2>
+                <br/>
                 <p>
-                  User name: {{help.requester.name}}
+                  User Name: {{help.requester.name}}
                 </p>
                 <br />
                 <div class="text--primary">
