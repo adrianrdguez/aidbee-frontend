@@ -3,6 +3,14 @@
     <div fixed>
       <p class="letras subtitle-1 font-weight-bold secondary2--text" fixed>Help other people</p>
     </div>
+    <div class="filter-ctrl">
+      <input
+        id="filter-input"
+        type="text"
+        name="filter"
+        placeholder="Filter by name"
+      />
+    </div>
     <MglMap :accessToken="accessToken" :mapStyle="mapStyle">
       <MglMarker
         v-for="(help, idx) in allHelps"
@@ -20,7 +28,7 @@
               <p>User Name: {{help.requester.name}}</p>
               <br />
               <div class="text--primary">Information: {{help.text}}</div>
-              <br />
+              <br/>
             </v-card-text>
             <v-card-actions>
               <v-btn
@@ -113,5 +121,18 @@ export default {
   justify-content: center;
   margin-top: 5px;
   background-color: #edc1bb;
+}
+
+.filter-ctrl input[type='text'] {
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+width: 100%;
+border: 0;
+background-color: #fff;
+margin: 0;
+color: rgba(0, 0, 0, 0.5);
+padding: 10px;
+box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+border-radius: 3px;
+width: 180px;
 }
 </style>

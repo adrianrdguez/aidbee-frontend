@@ -1,9 +1,9 @@
 <template>
   <div class="color">
-    <v-container class="fill-height">
-      <v-row align="center" justify="center" >
+    <v-container class="fill-height grid-list-md text-xs-center">
+      <v-row align="center" justify="center">
         <v-col cols="12" sm="8" md="6" lg="4">
-          <v-card class="elevation-3">
+          <v-card class="elevation-3 mx-auto">
             <v-toolbar color="primary" dark flat >
               <v-spacer />
               <v-toolbar-title class="text-center">Login</v-toolbar-title>
@@ -38,12 +38,19 @@
 
               </v-form>
             </v-card-text>
-            <v-card-actions>
+            <v-card-actions class="card">
               <v-spacer />
-              <v-btn class="button" color="primary" @click="login">Inicia sesión</v-btn>
+              <v-btn
+              class="button"
+              color="primary"
+              @click="login"
+              absolute
+              bottom
+              :style="{left: '50%', transform:'translateX(-50%)'}"
+              >
+              Inicia sesión</v-btn>
               <v-spacer />
             </v-card-actions>
-            <!-- <h6 class='text2'>Aun no tienes cuenta? <router-link class='lgbtn' to="/signup">Create Una Aquí</router-link></h6> -->
 
           </v-card>
         </v-col>
@@ -110,4 +117,9 @@ export default {
 .button {
   bottom: 20px;
 }
+
+.card {
+  padding: 18px;
+}
+
 </style>

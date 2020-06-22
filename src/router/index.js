@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 // Views loaded
 import Home from '../views/Home.vue'
+import Cover from '../views/Cover.vue'
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
 import HelpShow from '../views/HelpShow.vue'
@@ -18,7 +19,13 @@ const routes = [
   {
     path: '/',
     name: 'Welcome',
-    redirect: { name: 'Signup' }
+    redirect: { name: 'Cover' }
+  },
+  {
+    path: '/cover',
+    name: 'Cover',
+    meta: { layout: 'simple' },
+    component: Cover
   },
   {
     path: '/login',

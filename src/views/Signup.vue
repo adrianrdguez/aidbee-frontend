@@ -3,11 +3,6 @@
     <v-container class="fill-height" fluid >
       <v-row align="center" justify="center" >
         <v-col cols="12" sm="8" md="6" lg="4">
-            <h1 class="mt-12 white--text">¡Bienvenido a Aidbee!</h1>
-            <br />
-            <h2 class="white--text">¿No puedes salir de casa? Pide ayuda a algún voluntario local. ¿Te gustaría ayudar a tus vecinos? Entrega objetos esenciales a vecinos del alredor.</h2>
-          </v-col>
-        <v-col cols="12" sm="8" md="6" lg="4">
           <v-card class="elevation-3">
             <v-toolbar color="primary" dark flat >
               <v-spacer />
@@ -65,10 +60,17 @@
             ></v-text-field>
               </v-form>
             </v-card-text>
-            <v-card-actions>
-              <v-spacer />
-              <v-btn class='button' color="primary" @click="signup">Únete</v-btn>
-              <v-spacer />
+            <v-card-actions class="card">
+              <v-btn
+              class='button'
+              color="primary"
+              @click="signup"
+              absolute
+              bottom
+              :style="{left: '50%', transform:'translateX(-50%)'}"
+              >
+              Únete
+              </v-btn>
             </v-card-actions>
 
           </v-card>
@@ -131,14 +133,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.text2 {
-  padding-bottom: 2px;
-  padding-left: 5px;
-  text-align: center;
-}
 
 .button {
   bottom: 20px;
+}
+
+.card {
+  padding: 18px
 }
 
 </style>
